@@ -1,14 +1,25 @@
+ENV['SINATRA_ENV'] = 'test'
+
+require_relative '../config/environment'
 require "bundler/setup"
-require "oh_my_dog_sinatra"
 
 RSpec.configure do |config|
-  # Enable flags like --only-failures and --next-failure
-  config.example_status_persistence_file_path = ".rspec_status"
+  #config.run_all_when_everything_filtered = true
+  #config.filter_run :focus
+  #config.include Rack::Test::Methods
+  #config.include Capybara::DSL
+  DatabaseCleaner.strategy = :truncation
 
-  # Disable RSpec exposing methods globally on `Module` and `main`
-  config.disable_monkey_patching!
-
-  config.expect_with :rspec do |c|
-    c.syntax = :expect
+  config.before do
+    DatabaseCleaner.clean
   end
+
+  config.after do
+    DatabaseCleaner.clean
+  end
+
+
+  config.order = 'default'
 end
+
+ActiveRecord::Base.logger.level = 1
