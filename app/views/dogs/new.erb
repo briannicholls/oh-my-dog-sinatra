@@ -2,6 +2,17 @@
 
 <form action="/dogs" method="post">
 <table>
+
+  <tr>
+    <td><label for="dog[owner_id]">Owner:</label></td>
+    <td><select type="select" name="dog[owner_id]">
+      <% Owner.all.sort_by{ |e| e.name }.each do |owner| %>
+      <option value="<%= owner.id %>"><%= owner.name %></option>
+      <% end %>
+      </select>
+    </td>
+  </tr>
+
   <tr>
     <td><label for="dog[name]">Name:</label></td>
     <td><input type="text" name="dog[name]"></td>

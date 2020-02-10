@@ -1,6 +1,12 @@
 <h1><%= "#{@dog.name}" %></h1>
 
 <table>
+
+  <tr>
+    <td><label for="owner_name"></label>Owner: </td>
+    <td id="owner_name"><a href="/owners/<%= @dog.owner.id %>"><%= @dog.owner.name %></a></td>
+  </tr>
+
   <tr>
     <td><label for="name">Name:</label></td>
     <td id="name"><%= @dog.name %></td>
