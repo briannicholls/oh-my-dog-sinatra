@@ -1,18 +1,21 @@
 source "https://rubygems.org"
 
-gem 'activerecord', require: 'active_record'
+gem 'activerecord', '~>6.0'
 gem 'sinatra-activerecord', require: 'sinatra/activerecord'
-gem 'pry'
-gem 'rack'
-gem 'bcrypt'
-gem 'sinatra'
 gem 'sqlite3'
+gem 'sinatra'
+gem 'thin'
 gem 'shotgun'
+gem 'pry'
+gem 'rack-test'
+gem 'bcrypt'
 gem 'require_all'
 
 gem "rake", "~> 12.0"
-gem "rspec", "~> 3.0"
+
 
 group :test do
+  gem "rspec", "~> 3.0"
   gem 'capybara'
+  gem 'database_cleaner'
 end
