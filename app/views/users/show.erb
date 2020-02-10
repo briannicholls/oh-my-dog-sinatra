@@ -2,7 +2,7 @@
 <label for="user_email">Email: </label>
 <p id="user_email"><%= @user.email %></p>
 
-<ul>
-  <li><a href="/users/<%= @user.id %>/edit">Edit User</a></li>
-  <li><a href="/users">All Users</a></li>
-</ul>
+<nav>
+  <a href="/users/<%= @user.id %>/edit">Edit User</a> | 
+  <a href="/users">All Users</a>
+</nav>
