@@ -1,0 +1,15 @@
+<h1>Import Contacts</h1>
+
+<h2>Instructions</h2>
+
+<p>1. Go to https://contacts.google.com/</p>
+
+<p>2. In the menu, choose "Export", then "Google CSV"</p>
+
+<p>3. Click "Import Contacts" below and choose the CSV you exported.</p>
+
+<form action="/import" method="post">
+  <label for="file">Choose File: </label>
+  <input type="file" name="file">
+  <input type="submit" name="submit" value="Import!">
+</form>
