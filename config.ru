@@ -10,4 +10,5 @@ use UsersController
 use OwnersController
 use DogsController
 use WalksController
+use SessionsController
 run ApplicationController

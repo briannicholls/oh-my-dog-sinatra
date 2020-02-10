@@ -10,7 +10,7 @@ gem 'pry'
 gem 'rack-test'
 gem 'bcrypt'
 gem 'require_all'
-
+gem 'smarter_csv'
 gem "rake", "~> 12.0"
 
 
