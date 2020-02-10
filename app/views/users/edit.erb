@@ -20,12 +20,18 @@
 
   <tr>
     <td></td>
-    <td><input type="submit"></td>
+    <td><input type="submit" value="Update"></td>
   </tr>
 </table>
 </form>
 
+<% if logged_in? and @user.id == current_user.id %>
 <form action="/users/<%= @user.id %>" method="post">
   <input type="hidden" name="_method" value="delete">
-  <input type="submit" name="delete" value="Delete User">
-</form>
+  <label for="delete">Delete My Account: </label>
+  <input type="submit" name="delete" value="Delete Account">
+</form
+<% end %>
+<nav>
+  <a href="/users/<%= @user.id %>">Back</a>
+</nav>
