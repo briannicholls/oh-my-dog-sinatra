@@ -8,7 +8,7 @@ task :console do
 end
 
 
-desc 'Import contacts from "contacts.csv" in /lib'
+desc 'Seed DB with contacts from "contacts.csv" in /lib'
 task :import_contacts do
   ContactsImporter.new.import_from_file('./lib/contacts.csv')
 end
