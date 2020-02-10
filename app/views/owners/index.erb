@@ -1,7 +1,10 @@
 <h1>All Owners</h1>
 <%# if logged_in? %>
 
-<a href="/owners/new">Create New Owner</a>
+<nav>
+  <a href="/owners/new">Create New Owner</a> |
+  <a href="/import">Import Google CSV</a>
+</nav>
 <ol>
   <% Owner.all.each do |owner| %>
     <li><a href="/owners/<%= owner.id %>"><%= "#{owner.first_name} #{owner.last_name}" %></a></li>
