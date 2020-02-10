@@ -1,0 +1,34 @@
+<h1><%= "#{@dog.name}" %></h1>
+
+<table>
+  <tr>
+    <td><label for="dog[name]">Name:</label></td>
+    <td><%= @dog.name %></td>
+  </tr>
+
+  <tr>
+    <td><label for="dog[breed]">Breed:</label></td>
+    <td><%= @dog.breed %></td>
+  </tr>
+
+  <tr>
+    <td><label for="dog[birthday]">Birthday:</label></td>
+    <td><%= @dog.birthday %></td>
+  </tr>
+
+  <tr>
+    <td><label for="dog[temperament]">Temperament:</label></td>
+    <td><%= @dog.temperament %></td>
+  </tr>
+
+  <tr>
+    <td><label for="dog[notes]">Notes:</label></td>
+    <td><%= @dog.notes %></td>
+  </tr>
+
+</table>
+<br>
+<nav>
+  <a href="/dogs/<%= @dog.id %>/edit">Edit Dog</a> |
+  <a href="/dogs">All Dogs</a>
+</nav>

@@ -1,0 +1,9 @@
+<h1>All Dogs</h1>
+<%# if logged_in? %>
+<a href="/dogs/new">Create New Dog</a>
+<ol>
+  <% Dog.all.each do |dog| %>
+    <li><a href="/dogs/<%= dog.id %>"><%= "#{dog.name}" %></a></li>
+  <% end %>
+</ol>
+<%# end %>

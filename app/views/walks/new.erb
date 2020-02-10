@@ -1,0 +1,63 @@
+<h1>New Walk</h1>
+
+<form action="/walks" method="post">
+<table>
+
+  <tr>
+    <td><label for="walk[date]">Date: </label></td>
+    <td><input type="date" name="walk[date]" min="2020-02-09" value="<%= Time.now.strftime('%Y-%m-%d') %>"></td>
+  </tr>
+
+  <tr>
+    <td><label for="walk[window_start]">Window Start:</label></td>
+    <td><input type="time" name="walk[window_start]" value="10:00" min="8:00" max="21:00"></td>
+  </tr>
+
+  <tr>
+    <td><label for="walk[window_end]">Window End:</label></td>
+    <td><input type="time" name="walk[window_end]" value="12:00" min="9:00" max="22:00"></td>
+  </tr>
+
+  <tr>
+    <td><label for="walk[dog]">Dog:</label></td>
+    <td>
+      <select name="walk[dog_id]">
+      <% Dog.all.each do |dog| %>
+      <option value="<%= dog.id %>"><%= dog.name %></option>
+      <% end %>
+    </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td><label for="walk[duration]">Walk Length: </label></td>
+    <td>**Dynamic based on dog selection** *button to change*</td>
+  </tr>
+
+  <tr>
+    <td><label for="dog[notes]">Dog Notes: </label></td>
+    <td>**Dynamic based on dog selection**</td>
+  </tr>
+
+  <tr>
+    <td><label for="walk[notes]">Walk Notes:</label></td>
+    <td><input type="textarea" name="walk[notes]"></td>
+  </tr>
+
+  <tr>
+    <td><label for="walk[user]">Walker:</label></td>
+    <td>
+      <select name="walk[user_id]">
+      <% User.all.each do |user| %>
+      <option value="<%= user.id %>"><%= user.first_name %></option>
+      <% end %>
+    </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td><input type="submit"></td>
+  </tr>
+</table>
+</form>

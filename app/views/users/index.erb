@@ -1,0 +1,8 @@
+<h1>All Users</h1>
+<%# if logged_in? %>
+<ol>
+  <% User.all.each do |user| %>
+    <li><a href="/users/<%= user.id %>"><%= "#{user.first_name} #{user.last_name}" %></a></li>
+  <% end %>
+</ol>
+<%# end %>

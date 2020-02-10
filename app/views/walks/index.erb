@@ -1,0 +1,9 @@
+<h1>All Walks</h1>
+<%# if logged_in? %>
+<a href="/walks/new">Create New Walk</a>
+<ol>
+  <% Walk.all.each do |walk| %>
+    <li><%= walk.dog.name %> - <a href="/walks/<%= walk.id %>"><%= "#{walk.window_start.strftime('%H:%M')} - #{walk.window_end.strftime('%H:%M')}" %></a></li>
+  <% end %>
+</ol>
+<%# end %>
