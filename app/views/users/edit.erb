@@ -1,5 +1,13 @@
 <h1>Edit User</h1>
 
+<% if @user.errors %>
+  <ol>
+  <% @user.errors.full_messages.each do |error| %>
+  <li><%= error.to_sentence %></li>
+  <% end %>
+</ol>
+<% end %>
+
 <form action="/users/<%= @user.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
 <table>

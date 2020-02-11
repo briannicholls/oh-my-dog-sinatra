@@ -1,15 +1,27 @@
-<header>
-  <% if logged_in? %>
-  <nav>
-    <a href="/users">Users</a> |
-    <a href="/owners">Owners</a> |
-    <a href="/dogs">Dogs</a> |
-    <a href="/walks">Walks</a>
-  </nav>
-  <% end %>
-</header>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oh My Dog! Pet Care</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  </head>
+  <body>
 
-<div class="container">
+<div class="w3-container">
+
+  <header>
+    <% if logged_in? %>
+    <nav class="w3-bar w3-black">
+      <a href="/users">Users</a> |
+      <a href="/owners">Owners</a> |
+      <a href="/dogs">Dogs</a> |
+      <a href="/walks">Walks</a> ||
+      <a href="/logout">Log Out</a>
+    </nav>
+    <% end %>
+  </header>
 
   <%= yield %>
 
@@ -17,3 +29,6 @@
 
 <footer>
 </footer>
+
+  </body>
+</html>

@@ -1,9 +1,31 @@
-<h1>All Walks</h1>
-<%# if logged_in? %>
-<a href="/walks/new">Create New Walk</a>
-<ol>
+
+
+<table class="w3-table">
+  <tr>
+    <th colspan="2"><h1>All Walks</h1></th>
+  </tr>
+
+  <tr>
+    <td colspan="2"><a href="/walks/new">Create New Walk</a></td>
+  </tr>
+
+  <tr>
+    <th>Dog</th>
+    <th>Pick-Up Window</th>
+  </tr>
+
   <% Walk.all.each do |walk| %>
-    <li><%= walk.dog.name %> - <a href="/walks/<%= walk.id %>"><%= "#{walk.window_start.strftime('%H:%M')} - #{walk.window_end.strftime('%H:%M')}" %></a></li>
+  <tr>
+    <td><%= walk.dog.name %></td>
+    <td>
+      <a href="/walks/<%= walk.id %>"><%= "#{walk.window_start.strftime('%H:%M')} - #{walk.window_end.strftime('%H:%M')}" %></a>
+    </td>
+  </tr>
   <% end %>
-</ol>
-<%# end %>
+
+
+  <tr>
+
+  </tr>
+
+</table>

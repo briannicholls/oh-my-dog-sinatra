@@ -1,35 +1,42 @@
 <h1>Sign Up</h1>
 
+<% if @user and @user.errors %>
+  <p class="w3-panel w3-red"><%= @user.errors.full_messages.to_sentence %></p>
+<% end %>
+
 <form action="/users" method="post">
-<table>
+<table class="w3-table w3-bordered w3-card">
+
   <tr>
-    <td><label for="user[first_name]">First Name:</label></td>
-    <td><input type="text" name="user[first_name]"></td>
+    <td><label class="w3-label" for="user[first_name]">First Name:</label></td>
+    <td>
+      <input class="w3-input" type="text" name="user[first_name]" required id="user[first_name]" value="<%= @user.first_name if @user %>">
+    </td>
   </tr>
 
   <tr>
     <td><label for="user[last_name]">Last Name:</label></td>
-    <td><input type="text" name="user[last_name]"></td>
+    <td><input class="w3-input" type="text" name="user[last_name]" id="user[last_name]" value="<%= @user.last_name if @user %>"></td>
   </tr>
 
   <tr>
     <td><label for="user[email]">Email:</label></td>
-    <td><input type="text" name="user[email]"></td>
+    <td><input class="w3-input" type="text" name="user[email]" required id="user[email]" value="<%= @user.email if @user %>"></td>
   </tr>
 
   <tr>
-    <td><label for="password">Password: </label></td>
-    <td><input type="password" name="password"></td>
+    <td><label for="user[password]">Password:</label></td>
+    <td><input class="w3-input" type="password" name="user[password]" required id="user[password]"></td>
   </tr>
 
   <tr>
-    <td><label for="password_confirmation">Confirm Password: </label></td>
-    <td><input type="password" name="password_confirmation"></td>
+    <td><label for="user[password_confirmation]">Confirm Password:</label></td>
+    <td><input class="w3-input" type="password" name="user[password_confirmation]" required id="user[password_confirmation]"></td>
   </tr>
 
   <tr>
     <td></td>
-    <td><input type="submit"></td>
+    <td><input type="submit" class="w3-button w3-block w3-green"></td>
   </tr>
 </table>
 </form>

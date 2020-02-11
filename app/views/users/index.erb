@@ -1,8 +1,12 @@
-<h1>All Users</h1>
-<%# if logged_in? %>
-<ol>
+<table class="w3-table">
+  <tr>
+    <th><h1>All Users</h1></th>
+  </tr>
   <% User.all.each do |user| %>
-    <li><a href="/users/<%= user.id %>"><%= "#{user.first_name} #{user.last_name}" %></a></li>
+  <tr>
+    <td>
+      <a href="/users/<%= user.id %>"><%= "#{user.first_name} #{user.last_name}" %></a>
+    </td>
+  </tr>
   <% end %>
-</ol>
-<%# end %>
+</table>

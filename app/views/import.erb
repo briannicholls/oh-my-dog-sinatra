@@ -8,8 +8,10 @@
 
 <p>3. Click "Import Contacts" below and choose the CSV you exported.</p>
 
-<form action="/import" method="post">
+<form action="/import" method="post" enctype="multipart/form-data">
+
   <label for="file">Choose File: </label>
-  <input type="file" name="file">
+  <input type="file" accept=".csv" name="file">
+
   <input type="submit" name="submit" value="Import!">
 </form>

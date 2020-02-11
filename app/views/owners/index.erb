@@ -1,13 +1,24 @@
-<h1>All Owners</h1>
-<%# if logged_in? %>
+<table class="w3-table">
+  <tr>
+    <th colspan="2"><h1>All Owners</h1></th>
+  </tr>
 
-<nav>
-  <a href="/owners/new">Create New Owner</a> |
-  <a href="/import">Import Google CSV</a>
-</nav>
-<ol>
-  <% Owner.all.each do |owner| %>
-    <li><a href="/owners/<%= owner.id %>"><%= "#{owner.first_name} #{owner.last_name}" %></a></li>
-  <% end %>
-</ol>
-<%# end %>
+  <tr>
+    <th>
+      <a href="/owners/new">Create New Owner</a>
+    </th>
+    <th>
+      <a href="/import">Import Google CSV</a>
+    </th>
+  </tr>
+
+
+<% Owner.all.sort_by{ |e| e.first_name}.each do |owner| %>
+<tr>
+  <td>
+    <a href="/owners/<%= owner.id %>"><%= "#{owner.first_name} #{owner.last_name}" %></a>
+  </td>
+</tr>
+<% end %>
+
+</table>

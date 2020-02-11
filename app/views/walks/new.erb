@@ -1,27 +1,34 @@
-<h1>New Walk</h1>
-
 <form action="/walks" method="post">
-<table>
+<table class="w3-table w3-card w3-bordered">
+  <tr>
+    <th colspan="2"><h1>New Walk</h1></th>
+  </tr>
 
   <tr>
     <td><label for="walk[date]">Date: </label></td>
-    <td><input type="date" name="walk[date]" min="2020-02-09" value="<%= Time.now.strftime('%Y-%m-%d') %>"></td>
+    <td>
+      <input type="date" name="walk[date]" min="2020-02-09" value="<%= Time.now.strftime('%Y-%m-%d') %>" id="walk[date]" class="w3-input">
+    </td>
   </tr>
 
   <tr>
     <td><label for="walk[window_start]">Window Start:</label></td>
-    <td><input type="time" name="walk[window_start]" value="10:00" min="8:00" max="21:00"></td>
+    <td>
+      <input type="time" name="walk[window_start]" value="10:00" min="8:00" max="21:00" id="walk[window_start]" class="w3-input">
+    </td>
   </tr>
 
   <tr>
     <td><label for="walk[window_end]">Window End:</label></td>
-    <td><input type="time" name="walk[window_end]" value="12:00" min="9:00" max="22:00"></td>
+    <td>
+      <input type="time" name="walk[window_end]" value="12:00" min="9:00" max="22:00" id="walk[window_end]" class="w3-input">
+    </td>
   </tr>
 
   <tr>
     <td><label for="walk[dog_id]">Dog:</label></td>
     <td>
-      <select name="walk[dog_id]">
+      <select name="walk[dog_id]" class="w3-select" id="walk[dog_id]">
       <% Dog.all.each do |dog| %>
       <option value="<%= dog.id %>"><%= dog.name %></option>
       <% end %>
@@ -41,13 +48,13 @@
 
   <tr>
     <td><label for="walk[notes]">Walk Notes:</label></td>
-    <td><input type="textarea" name="walk[notes]"></td>
+    <td><input type="textarea" name="walk[notes]" id="walk[notes]" class="w3-input"></td>
   </tr>
 
   <tr>
-    <td><label for="walk[user]">Walker:</label></td>
+    <td><label for="walk[user_id]">Walker:</label></td>
     <td>
-      <select name="walk[user_id]">
+      <select name="walk[user_id]" id="walk[user_id]" class="w3-input">
       <% User.all.each do |user| %>
       <option value="<%= user.id %>"><%= user.first_name %></option>
       <% end %>
@@ -57,7 +64,7 @@
 
   <tr>
     <td></td>
-    <td><input type="submit"></td>
+    <td><input type="submit" class="w3-btn w3-green w3-bar"></td>
   </tr>
 </table>
 </form>
