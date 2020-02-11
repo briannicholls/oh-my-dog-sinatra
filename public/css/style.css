@@ -1,0 +1,47 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+/*
+body {
+  background-color: #707070;
+}
+
+table {
+  margin: auto;
+  padding: 5px;
+  background-color: #69AF69;
+  width: 80%;
+}
+
+td {
+  align-self: flex-end;
+  padding: 4px;
+}
+
+*/
+
+table {
+  width: 80%;
+  background-color: white;
+}
+
+body {
+  background-color: #AAAAAA;
+  display: flex;
+}
+
+.container {
+}
+
+nav {
+  padding: 5px;
+  align-items: center;
+  font-size: 1.2em;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+header {
+  padding-top: 15px;
+}
