@@ -2,23 +2,36 @@ class ApplicationController < Sinatra::Base
   set :views, 'app/views'
   enable :sessions
   set :session_secret, 'potatoes'
+  set :public_folder, 'public'
 
 
   get '/' do
-    erb :index
+    if logged_in?
+      redirect '/walks'
+    else
+      erb :index
+    end
   end
 
   get '/signin' do
-    erb :'signin'
+    if !logged_in?
+      erb :'signin'
+    else
+      redirect '/'
+    end
   end
 
   get '/import' do
-    erb :import
+    if logged_in?
+      erb :import
+    else
+      redirect '/signin'
+    end
   end
 
   post '/import' do
-#    binding.pry
-    ContactsImporter.import_from_file(params[:file])
+    @file = File.open params[:file][:tempfile]
+    ContactsImporter.import_from_file(@file) if @file
     erb :'/owners/index'
   end
 

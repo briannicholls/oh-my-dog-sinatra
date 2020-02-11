@@ -1,27 +1,47 @@
 class UsersController < ApplicationController
+  #before '/users/*' do
+  #  # authenticate!
+  #end
+
   get '/users' do
-    erb :'/users/index'
+    #pass if !logged_in?
+    if !logged_in?
+      redirect '/'
+    else
+      erb :'/users/index'
+    end
   end
 
   get '/users/new' do
-    erb :'/users/new'
+    if logged_in?
+      redirect '/'
+    else
+      erb :'/users/new'
+    end
   end
 
   post '/users' do
+    #binding.pry
     @user = User.new(params[:user])
     if @user.save
-      redirect '/users'
+      session[:user_id] = @user.id
+      redirect '/walks'
     else
-      redirect '/users/new'
+      erb :'/users/new'
     end
   end
 
   get '/users/:id' do
     @user = User.find_by(id: params[:id])
-    erb :'/users/show'
+    if @user and logged_in?
+      erb :'/users/show'
+    else
+      redirect '/'
+    end
   end
 
   get '/users/:id/edit' do
+
     @user = User.find_by(id: params[:id])
     erb :'/users/edit'
   end
@@ -38,7 +58,8 @@ class UsersController < ApplicationController
   delete '/users/:id' do
     @user = User.find_by(id: params[:id])
     if @user.delete
-      redirect '/users'
+      session.clear
+      redirect '/'
     else
       redirect "/users/#{@user.id}"
     end
