@@ -30,7 +30,8 @@ class ContactsImporter
         apartment_number: owner_hash[:address2],
         zip_code: owner_hash[:zip_code],
         lockbox_code: owner_hash[:lockbox_code],
-        door_code: owner_hash[:door_code]
+        door_code: owner_hash[:door_code],
+        neighborhood: ContactsImporter.neighborhood(owner_hash[:zip_code])
       )
       o.save
     end
@@ -49,6 +50,16 @@ class ContactsImporter
       )
       d.save
     end
+  end
+
+  def self.neighborhood(zip_code)
+    neighborhoods = JSON.parse(File.read 'lib/nyc_neighborhoods.json')
+    neighborhoods.each do |hood|
+      if hood['zip_codes'].include?(zip_code.to_s)
+        return hood['neighborhood']
+      end
+    end
+    nil
   end
 
 end
