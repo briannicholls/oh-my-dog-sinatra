@@ -1,4 +1,4 @@
-<table class="w3-table">
+<table class="w3-table w3-bordered">
   <tr>
     <th colspan="2"><h1>All Owners</h1></th>
   </tr>
@@ -12,11 +12,16 @@
     </th>
   </tr>
 
-
-<% Owner.all.sort_by{ |e| e.first_name}.each do |owner| %>
+<% Owner.all.each do |owner| %>
 <tr>
   <td>
-    <a href="/owners/<%= owner.id %>"><%= "#{owner.first_name} #{owner.last_name}" %></a>
+    <a href="/owners/<%= owner.id %>"><%= "#{owner.name}" %></a>
+  </td>
+
+  <td>
+    <% if !owner.dogs.empty? %>
+      <a href="/dogs/<%= owner.dogs.first.id %>"><%= owner.dogs.first.name  %></a>
+    <% end %>
   </td>
 </tr>
 <% end %>

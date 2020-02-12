@@ -19,13 +19,19 @@ td {
 
 */
 
+* {
+  align-items: center;
+  align-content: center;
+  align-self: center;
+}
+
 table {
   width: 80%;
   background-color: white;
 }
 
 body {
-  background-color: #AAAAAA;
+  background-color: #888888;
   display: flex;
 }
 

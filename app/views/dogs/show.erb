@@ -1,10 +1,15 @@
-<h1><%= "#{@dog.name}" %></h1>
-
-<table>
+<table class="w3-table w3-bordered">
+  <tr>
+    <th colspan="2"><h1><%= "#{@dog.name}" %></h1></th>
+  </tr>
 
   <tr>
-    <td><label for="owner_name"></label>Owner: </td>
-    <td id="owner_name"><a href="/owners/<%= @dog.owner.id %>"><%= @dog.owner.name %></a></td>
+    <th colspan="2"><a href="/dogs/<%= @dog.id %>/edit">Edit Dog</a></th>
+  </tr>
+
+  <tr>
+    <td><label for="owner_name"></label>Owner:</td>
+    <td id="owner_name"><a href="/owners/<%= @dog.owner_id %>"><%= @dog.owner.name %></a></td>
   </tr>
 
   <tr>
@@ -33,8 +38,3 @@
   </tr>
 
 </table>
-<br>
-<nav>
-  <a href="/dogs/<%= @dog.id %>/edit">Edit Dog</a> |
-  <a href="/dogs">All Dogs</a>
-</nav>

@@ -1,8 +1,22 @@
-<h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
-<label for="user_email">Email: </label>
-<p id="user_email"><%= @user.email %></p>
+<table class="w3-table w3-bordered">
+  <tr>
+    <th colspan="2">
+    <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1></th>
+  </tr>
 
-<nav>
-  <a href="/users/<%= @user.id %>/edit">Edit User</a> | 
-  <a href="/users">All Users</a>
-</nav>
+  <tr>
+    <th colspan="2">
+      <a href="/users/<%= @user.id %>/edit">Edit User</a>
+    </th>
+  </tr>
+
+  <tr>
+    <td><label for="first_name">First Name:</label></td>
+    <td id="first_name"><%= @user.first_name %></td>
+  </tr>
+
+  <tr>
+    <td><label for="user_email">Email: </label></td>
+    <td id="user_email"><%= @user.email %></td>
+  </tr>
+</table>

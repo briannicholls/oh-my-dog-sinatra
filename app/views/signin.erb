@@ -1,26 +1,33 @@
-<h1>Sign In</h1>
+<% if flash.has?(:message) %>
+  <p class="w3-panel w3-red"><%= flash[:message] %></p>
+<% end %>
 
 <form action="/sessions" method="post">
 
-  <table>
+  <table class="w3-table w3-bordered">
+    <tr>
+      <th><h1>Sign In</h1></th>
+    </tr>
+
     <tr>
       <td><label for="email">Email:</label></td>
-      <td><input type="text" name="email"></td>
+      <td><input type="text" name="email" id="email"></td>
     </tr>
 
     <tr>
       <td><label for="password">Password:</label></td>
-      <td><input type="password" name="password"></td>
+      <td><input type="password" name="password" id="password"></td>
     </tr>
 
     <tr>
       <td></td>
-      <td><input type="submit" name="submit" value="Log In"></td>
+      <td><input class="w3-btn w3-bar w3-green" type="submit" name="submit" value="Log In"></td>
     </tr>
+
+    <tr>
+      <td colspan="2"><a href="/users/new">Register</a></td>
+    </tr>
+
   </table>
 
 </form>
-
-<nav>
-  <a href="/users/new">Register</a>
-</nav>
