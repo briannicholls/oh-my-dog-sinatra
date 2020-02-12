@@ -1,28 +1,63 @@
 # OhMyDogSinatra
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/oh_my_dog_sinatra`. To experiment with that code, run `bin/console` for an interactive prompt.
+The official web app of Oh My Dog! Pet Care.
 
-TODO: Delete this and the text above, and describe your gem
+Keeps track of all walks, dogs, owners, and users.
+
+Uses bcrypt for user password authentication.
+
+Support for importing contacts from CSV.
 
 ## Installation
 
-Add this line to your application's Gemfile:
 
-```ruby
-gem 'oh_my_dog_sinatra'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install oh_my_dog_sinatra
 
 ## Usage
 
-TODO: Write usage instructions here
+
+
+## Importing from .CSV
+
+Two Rake tasks are available for importing Dogs and Owners from CSV.
+CSV files should be placed and named appropriatelyin `db/import/csv/[model].csv`
+
+First import Owners, then Dogs:
+
+   `ruby
+   rake import_owners_from_csv
+   rake import_dogs_from_csv
+   `
+   The import methods will look for the following column headers, feel free to adjust the import methods for importing different attributes:
+
+   ```ruby
+   data = SmarterCSV.process('./db/import/csv/owners.csv')
+   data.each do |owner_hash|
+     o = Owner.new(
+       id: owner_hash[:id],
+       first_name: owner_hash[:name],
+       phone: owner_hash[:phone],
+       address: owner_hash[:address1],
+       apartment_number: owner_hash[:address2],
+       zip_code: owner_hash[:zip_code],
+       lockbox_code: owner_hash[:lockbox_code],
+       door_code: owner_hash[:door_code]
+     )
+     o.save
+   end
+
+   data = SmarterCSV.process('./db/import/csv/dogs.csv')
+   data.each do |dog_hash|
+     d = Dog.new(
+       id: dog_hash[:id],
+       name: dog_hash[:name],
+       breed: dog_hash[:breed],
+       temperament: dog_hash[:temperament],
+       notes: dog_hash[:notes],
+       owner_id: dog_hash[:owner_id]
+     )
+     d.save
+   end
+   ```
 
 ## Development
 
@@ -32,13 +67,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/oh_my_dog_sinatra. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/oh_my_dog_sinatra/blob/master/CODE_OF_CONDUCT.md).
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/nichol88/oh_my_dog_sinatra. This project is intended to be a safe, welcoming space for collaboration.
 
 ## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the OhMyDogSinatra project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/oh_my_dog_sinatra/blob/master/CODE_OF_CONDUCT.md).
