@@ -12,6 +12,8 @@
     <td>
       <a href="/dogs/<%= dog.id %>"><%= "#{dog.name}" %></a>
     </td>
+
+    <td><%= dog.owner.neighborhood %></td>
   </tr>
   <% end %>
 </table>
