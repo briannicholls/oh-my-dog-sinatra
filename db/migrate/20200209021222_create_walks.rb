@@ -5,6 +5,7 @@ class CreateWalks < ActiveRecord::Migration[6.0]
       t.datetime :window_end
       t.integer :user_id
       t.integer :dog_id
+      t.timestamps null: false
     end
   end
 end
