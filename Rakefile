@@ -15,6 +15,11 @@ end
 desc 'Import Owners from db/import/csv/owners.csv'
 task :import_owners_from_csv do
   ContactsImporter.import_owners_from_csv
+  Owner.all.each do |owner|
+    owner.neighborhood = NycNeighborhoods.neighborhood(owner.zip_code)
+    puts owner.zip_code
+    owner.save
+  end
 end
 
 desc 'Import Dogs from db/import/csv/dogs.csv'
