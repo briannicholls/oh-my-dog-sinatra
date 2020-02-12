@@ -15,7 +15,8 @@ ActiveRecord::Schema.define(version: 2020_02_09_233916) do
   create_table "dogs", force: :cascade do |t|
     t.string "name"
     t.integer "owner_id"
-    t.datetime "timestamps"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "breed"
     t.datetime "birthday"
     t.string "temperament"
@@ -25,6 +26,8 @@ ActiveRecord::Schema.define(version: 2020_02_09_233916) do
   create_table "owners", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.datetime "timestamps"
     t.string "phone"
     t.string "address"
@@ -42,8 +45,8 @@ ActiveRecord::Schema.define(version: 2020_02_09_233916) do
     t.string "first_name"
     t.string "last_name"
     t.string "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "walks", force: :cascade do |t|
@@ -51,8 +54,8 @@ ActiveRecord::Schema.define(version: 2020_02_09_233916) do
     t.datetime "window_end"
     t.integer "user_id"
     t.integer "dog_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "notes"
     t.string "duration"
     t.datetime "date"
