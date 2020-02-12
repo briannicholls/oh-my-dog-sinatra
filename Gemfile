@@ -12,6 +12,7 @@ gem 'bcrypt'
 gem 'require_all'
 gem 'smarter_csv'
 gem "rake", "~> 12.0"
+gem 'rack-flash3', require: 'rack-flash'
 
 
 group :test do

@@ -37,8 +37,6 @@ GEM
     minitest (5.14.0)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
-    net (0.3.3)
-      activesupport
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
     pry (0.12.2)
@@ -46,6 +44,8 @@ GEM
       method_source (~> 0.9.0)
     public_suffix (4.0.3)
     rack (2.1.2)
+    rack-flash3 (1.0.5)
+      rack
     rack-protection (2.0.8.1)
       rack
     rack-test (1.1.0)
@@ -99,8 +99,8 @@ DEPENDENCIES
   bcrypt
   capybara
   database_cleaner
-  net
   pry
+  rack-flash3
   rack-test
   rake (~> 12.0)
   require_all
