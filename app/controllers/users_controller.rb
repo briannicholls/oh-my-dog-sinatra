@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
-  #before '/users/*' do
-  #  # authenticate!
-  #end
 
   get '/users' do
-    #pass if !logged_in?
     if !logged_in?
       redirect '/'
     else
@@ -21,7 +17,6 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    #binding.pry
     @user = User.new(params[:user])
     if @user.save
       session[:user_id] = @user.id
@@ -34,14 +29,13 @@ class UsersController < ApplicationController
   get '/users/:id' do
     @user = User.find_by(id: params[:id])
     if @user and logged_in?
-      erb :'/users/show'
+      erb :'/users/show'      
     else
       redirect '/'
     end
   end
 
   get '/users/:id/edit' do
-
     @user = User.find_by(id: params[:id])
     erb :'/users/edit'
   end

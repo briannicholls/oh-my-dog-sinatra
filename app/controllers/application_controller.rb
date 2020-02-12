@@ -3,6 +3,7 @@ class ApplicationController < Sinatra::Base
   enable :sessions
   set :session_secret, 'potatoes'
   set :public_folder, 'public'
+  use Rack::Flash
 
 
   get '/' do

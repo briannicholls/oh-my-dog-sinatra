@@ -1,6 +1,10 @@
 class OwnersController < ApplicationController
   get '/owners' do
-    erb :'/owners/index'
+    if logged_in?
+      erb :'/owners/index'
+    else
+      redirect '/'
+    end
   end
 
   get '/owners/new' do

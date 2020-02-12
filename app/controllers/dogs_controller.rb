@@ -18,7 +18,11 @@ class DogsController < ApplicationController
 
   get '/dogs/:id' do
     @dog = Dog.find_by(id: params[:id])
-    erb :'/dogs/show'
+    if @dog
+      erb :'/dogs/show'
+    else
+      redirect '/dogs'
+    end
   end
 
   get '/dogs/:id/edit' do
