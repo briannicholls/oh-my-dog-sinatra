@@ -51,3 +51,7 @@ nav a {
 header {
   padding-top: 15px;
 }
+
+.w3-btn {
+  border-radius: 10px;
+}
