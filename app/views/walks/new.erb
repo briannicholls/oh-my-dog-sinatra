@@ -5,6 +5,17 @@
   </tr>
 
   <tr>
+    <td><label for="walk[dog_id]">Dog:</label></td>
+    <td>
+      <select name="walk[dog_id]" class="w3-select" id="walk[dog_id]">
+        <% Dog.all.each do |dog| %>
+        <option value="<%= dog.id %>"><%= dog.name %></option>
+        <% end %>
+      </select>
+    </td>
+  </tr>
+
+  <tr>
     <td><label for="walk[date]">Date: </label></td>
     <td>
       <input type="date" name="walk[date]" min="2020-02-09" value="<%= Time.now.strftime('%Y-%m-%d') %>" id="walk[date]" class="w3-input">
@@ -26,24 +37,12 @@
   </tr>
 
   <tr>
-    <td><label for="walk[dog_id]">Dog:</label></td>
-    <td>
-      <select name="walk[dog_id]" class="w3-select" id="walk[dog_id]">
-      <% Dog.all.each do |dog| %>
-      <option value="<%= dog.id %>"><%= dog.name %></option>
-      <% end %>
-    </select>
-    </td>
-  </tr>
-
-  <tr>
     <td><label for="walk[duration]">Walk Length: </label></td>
-    <td>**Dynamic based on dog selection** *button to change*</td>
-  </tr>
-
-  <tr>
-    <td><label for="dog[notes]">Dog Notes: </label></td>
-    <td>**Dynamic based on dog selection**</td>
+    <td><select class="w3-select" id="walk[duration]" name="walk[duration]">
+      <option value="15">15 min</option>
+      <option value="30">30 min</option>
+      <option value="60">60 min</option>
+    </select></td>
   </tr>
 
   <tr>
@@ -55,6 +54,7 @@
     <td><label for="walk[user_id]">Walker:</label></td>
     <td>
       <select name="walk[user_id]" id="walk[user_id]" class="w3-input">
+      <option value=""></option>
       <% User.all.each do |user| %>
       <option value="<%= user.id %>"><%= user.first_name %></option>
       <% end %>

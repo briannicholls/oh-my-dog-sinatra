@@ -1,0 +1,80 @@
+<table class="w3-table w3-card w3-bordered">
+  <tr>
+    <th colspan="2"><h1><%= @walk.dog.name %></h1></th>
+  </tr>
+
+  <% if flash.has?(:message) %>
+  <tr>
+    <td colspan="2" class="w3-bar w3-green">
+      <%= flash[:message] %>
+    </td>
+  </tr>
+  <% end %>
+
+  <tr>
+    <td colspan="2">
+      <h4>Pickup Window: <strong><%= @walk.window_start.strftime('%l:%M%P') %> - <%= @walk.window_end.strftime('%l:%M%P') %></strong></h4>
+    </td>
+  </tr>
+
+  <tr>
+    <td><label for="walk[date]">Date: </label></td>
+    <td id="walk[date]">
+      <%= @walk.date.strftime('%A, %D') %>
+    </td>
+  </tr>
+
+  <tr>
+    <td><label for="walk[address]">Address:</label></td>
+    <td id="walk[address]">
+      <%= @walk.dog.owner.address %>
+    </td>
+  </tr>
+
+  <tr>
+    <td><label for="walk[apartment_number]">Apt. #:</label></td>
+    <td id="walk[apartment_number]">
+      <%= @walk.dog.owner.apartment_number %>
+    </td>
+  </tr>
+
+  <tr>
+    <td><label for="walk[instructions]">Entry Instructions:</label></td>
+    <td id="walk[instructions]">
+      <%= @walk.dog.owner.entry_instructions %>
+    </td>
+  </tr>
+
+  <tr>
+    <td><label for="walk[duration]">Walk Length: </label></td>
+    <td id="walk[duration]">
+      <%= @walk.duration %> min
+    </td>
+  </tr>
+
+  <tr>
+    <td><label for="walk[notes]">Walk Notes:</label></td>
+    <td id="walk[notes]"><%= @walk.notes %></td>
+  </tr>
+
+  <tr>
+    <td><label for="dog[notes]">Dog Notes: </label></td>
+    <td><%= @walk.dog.notes %></td>
+  </tr>
+
+  <tr>
+    <td><label for="walk[user_id]">Walker:</label></td>
+    <td id="walk[user_id]">
+      <% if @walk.user && @walk.user.respond_to?('name') %>
+        <%= @walk.user.name %>
+      <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <th colspan="2">
+      <a class="w3-bar w3-btn w3-yellow" href="/walks/<%= @walk.id %>/edit">Edit Walk</a>
+    </th>
+  </tr>
+
+</table>

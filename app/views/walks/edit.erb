@@ -1,0 +1,90 @@
+<% if @walk.errors.any? %>
+  <div class="w3-panel w3-red">
+    <%= @walk.errors.full_messages %>
+  </div>
+<% end %>
+
+<table class="w3-table w3-card w3-bordered">
+  <form action="/walks/<%= @walk.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+
+  <tr>
+    <th colspan="2"><h1>Edit Walk</h1></th>
+  </tr>
+
+  <tr>
+    <td><label for="walk[dog_id]">Dog:</label></td>
+    <td>
+      <select name="walk[dog_id]" class="w3-select" id="walk[dog_id]">
+      <% Dog.all.each do |dog| %>
+      <option value="<%= dog.id %>" <%= "selected" if dog.id == @walk.dog_id %>><%= dog.name %></option>
+      <% end %>
+    </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td><label for="walk[date]">Date:</label></td>
+    <td>
+      <input type="date" name="walk[date]" min="2020-02-09" value="<%= @walk.date.strftime('%Y-%m-%d') %>" id="walk[date]" class="w3-input">
+    </td>
+  </tr>
+
+  <tr>
+    <td><label for="walk[window_start]">Window Start:</label></td>
+    <td>
+      <input type="time" name="walk[window_start]" value="<%= @walk.window_start.strftime('%H:%M') %>" min="8:00" max="21:00" id="walk[window_start]" class="w3-input">
+    </td>
+  </tr>
+
+  <tr>
+    <td><label for="walk[window_end]">Window End:</label></td>
+    <td>
+      <input type="time" name="walk[window_end]" value="<%= @walk.window_end.strftime('%H:%M') %>" min="9:00" max="22:00" id="walk[window_end]" class="w3-input">
+    </td>
+  </tr>
+
+
+  <tr>
+    <td><label for="walk[duration]">Walk Length: </label></td>
+    <td><select class="w3-select" id="walk[duration]" name="walk[duration]">
+      <option value="15" <%= "selected" if @walk.duration == '15' %>>15 min</option>
+      <option value="30" <%= "selected" if @walk.duration == '30' %>>30 min</option>
+      <option value="60" <%= "selected" if @walk.duration == '60' %>>60 min</option>
+    </select></td>
+  </tr>
+
+  <tr>
+    <td><label for="walk[notes]">Walk Notes:</label></td>
+    <td><input type="textarea" name="walk[notes]" id="walk[notes]" class="w3-input" value="<%= @walk.notes %>"></td>
+  </tr>
+
+  <tr>
+    <td><label for="walk[user_id]">Walker:</label></td>
+    <td>
+      <select name="walk[user_id]" id="walk[user_id]" class="w3-input">
+      <option <%= "selected" if !@walk.user %> value="<%= nil %>"></option>
+      <% User.all.each do |user| %>
+      <option value="<%= user.id %>" <%= "selected" if user == @walk.user %>><%= user.first_name %></option>
+      <% end %>
+    </select>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+      <input type="submit" name="submit" class="w3-btn w3-green w3-bar" value="Update">
+    </td>
+  </tr>
+</form>
+
+  <tr>
+    <td colspan="2">
+      <form action="/walks/<%= @walk.id %>/delete" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input class="w3-btn w3-bar w3-red" type="submit" name="delete" value="Delete Walk">
+      </form>
+    </td>
+  </tr>
+
+</table>
