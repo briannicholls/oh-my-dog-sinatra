@@ -52,14 +52,4 @@ class ContactsImporter
     end
   end
 
-  def self.neighborhood(zip_code)
-    neighborhoods = JSON.parse(File.read 'lib/nyc_neighborhoods.json')
-    neighborhoods.each do |hood|
-      if hood['zip_codes'].include?(zip_code.to_s)
-        return hood['neighborhood']
-      end
-    end
-    nil
-  end
-
 end
