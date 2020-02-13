@@ -1,4 +1,5 @@
 class WalksController < ApplicationController
+
   get '/walks' do
     erb :'/walks/index'
   end
@@ -32,14 +33,22 @@ class WalksController < ApplicationController
 
   patch '/walks/:id' do
     @walk = Walk.find_by(id: params[:id])
+    params[:walk][:window_start] = Time.parse(
+      "#{params[:walk][:date]}T#{params[:walk][:window_start]}Z"
+    )
+    params[:walk][:window_end] = Time.parse(
+      "#{params[:walk][:date]}T#{params[:walk][:window_end]}Z"
+    )
     if @walk and @walk.update(params[:walk])
+      flash[:message] = "Update successful!"
       redirect "/walks/#{@walk.id}"
     else
+      flash[:message] = "Update failed"
       redirect "/walks/#{@walk.id}/edit"
     end
   end
 
-  delete '/walks/:id' do
+  delete '/walks/:id/delete' do
     @walk = Walk.find_by(id: params[:id])
     if @walk.delete
       redirect '/walks'

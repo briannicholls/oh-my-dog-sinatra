@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   get '/users/:id' do
     @user = User.find_by(id: params[:id])
     if @user and logged_in?
-      erb :'/users/show'      
+      erb :'/users/show'
     else
       redirect '/'
     end
@@ -37,7 +37,11 @@ class UsersController < ApplicationController
 
   get '/users/:id/edit' do
     @user = User.find_by(id: params[:id])
-    erb :'/users/edit'
+    if logged_in?
+      erb :'/users/edit'
+    else
+      redirect '/'
+    end
   end
 
   patch '/users/:id' do
@@ -45,6 +49,7 @@ class UsersController < ApplicationController
     if @user and @user.update(params[:user])
       redirect "/users/#{@user.id}"
     else
+      flash[:message] = "Update failed."
       redirect "/users/#{@user.id}/edit"
     end
   end
