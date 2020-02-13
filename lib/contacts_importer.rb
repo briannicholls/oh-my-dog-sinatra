@@ -31,7 +31,7 @@ class ContactsImporter
         zip_code: owner_hash[:zip_code],
         lockbox_code: owner_hash[:lockbox_code],
         door_code: owner_hash[:door_code],
-        neighborhood: ContactsImporter.neighborhood(owner_hash[:zip_code])
+        neighborhood: NycNeighborhoods.neighborhood(owner_hash[:zip_code])
       )
       o.save
     end
