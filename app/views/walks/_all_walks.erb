@@ -15,8 +15,7 @@
     <th>Pick-Up Window</th>
   </tr>
 
-  <% Walk.all.select{ |w| w.date.today? }.each do |walk| %>
-
+  <% Walk.all.select do |walk| %>
   <tr>
     <td><%= walk.dog.name %></td>
     <td>
@@ -24,5 +23,10 @@
     </td>
   </tr>
   <% end %>
+
+
+  <tr>
+
+  </tr>
 
 </table>

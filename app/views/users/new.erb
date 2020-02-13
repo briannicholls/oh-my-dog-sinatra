@@ -1,4 +1,4 @@
-<h1>Sign Up</h1>
+
 
 <% if @user and @user.errors %>
   <p class="w3-panel w3-red"><%= @user.errors.full_messages.to_sentence %></p>
@@ -6,6 +6,10 @@
 
 <form action="/users" method="post">
 <table class="w3-table w3-bordered w3-card">
+
+  <tr>
+    <th colspan="2"><h1>Sign Up</h1></th>
+  </tr>
 
   <tr>
     <td><label class="w3-label" for="user[first_name]">First Name:</label></td>

@@ -4,11 +4,7 @@
   </tr>
 
   <tr>
-    <th colspan="2"><a href="/dogs/<%= @dog.id %>/edit">Edit Dog</a></th>
-  </tr>
-
-  <tr>
-    <td"><label for="owner_name"></label>Owner:</td>
+    <td><label for="owner_name">Owner:</label></td>
     <td id="owner_name"><a href="/owners/<%= @dog.owner_id %>"><%= @dog.owner.name %></a></td>
   </tr>
 
@@ -23,8 +19,17 @@
   </tr>
 
   <tr>
-    <td><label for="birthdate">Birthday:</label></td>
-    <td id="birthdate"><%= @dog.birthdate %></td>
+    <td><label for="birthday">Birthday:</label></td>
+    <td id="birthday"><%= @dog.birthday %></td>
+  </tr>
+
+  <tr>
+    <td>
+      <label for="dog[appearance]">Appearance:</label>
+    </td>
+    <td id="dog[appearance]">
+      <%= @dog.appearance %>
+    </td>
   </tr>
 
   <tr>
@@ -37,4 +42,9 @@
     <td id="notes"><%= @dog.notes %></td>
   </tr>
 
+  <tr>
+    <th colspan="2">
+      <a class="w3-btn w3-bar w3-yellow" href="/dogs/<%= @dog.id %>/edit">Edit Dog</a>
+    </th>
+  </tr>
 </table>

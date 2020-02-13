@@ -1,13 +1,15 @@
-<h1>New Dog</h1>
-
 <form action="/dogs" method="post">
-<table>
+<table class="w3-table">
+
+  <tr>
+    <th><h1>New Dog</h1></th>
+  </tr>
 
   <tr>
     <td><label for="dog[owner_id]">Owner:</label></td>
-    <td><select type="select" name="dog[owner_id]">
+    <td><select class="w3-select" type="select" name="dog[owner_id]">
       <% Owner.all.sort_by{ |e| e.name }.each do |owner| %>
-      <option value="<%= owner.id %>"><%= owner.name %></option>
+      <option <%= "selected" if @owner and owner.id == @owner.id %> value="<%= owner.id %>"><%= owner.name %></option>
       <% end %>
       </select>
     </td>
@@ -15,32 +17,37 @@
 
   <tr>
     <td><label for="dog[name]">Name:</label></td>
-    <td><input type="text" name="dog[name]"></td>
+    <td><input class="w3-input" type="text" name="dog[name]" id="dog[name]"></td>
   </tr>
 
   <tr>
     <td><label for="dog[breed]">Breed:</label></td>
-    <td><input type="text" name="dog[breed]"></td>
+    <td><input class="w3-input" type="text" name="dog[breed]" id="dog[breed]"></td>
   </tr>
 
   <tr>
     <td><label for="dog[birthday]">Birthday:</label></td>
-    <td><input type="date" name="dog[birthday]"></td>
+    <td><input class="w3-input" type="date" name="dog[birthday]" id="dog[birthday]"></td>
+  </tr>
+
+  <tr>
+    <td><label for="dog[appearance]">Appearance:</label></td>
+    <td><input class="w3-input" type="text" id="dog[appearance]" name="dog[appearance]"></td>
   </tr>
 
   <tr>
     <td><label for="dog[temperament]">Temperament:</label></td>
-    <td><input type="text" name="dog[temperament]"></td>
+    <td><input class="w3-input" type="text" name="dog[temperament]" id="dog[temperament]"></td>
   </tr>
 
   <tr>
     <td><label for="dog[notes]">Notes:</label></td>
-    <td><input type="text" name="dog[notes]"></td>
+    <td><input class="w3-input" type="text" name="dog[notes]" id="dog[notes]"></td>
   </tr>
 
   <tr>
     <td></td>
-    <td><input type="submit"></td>
+    <td><input class="w3-btn w3-bar w3-green" type="submit"></td>
   </tr>
 </table>
 </form>

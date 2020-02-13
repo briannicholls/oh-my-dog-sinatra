@@ -5,14 +5,6 @@
     <th colspan="2"><h1><%= "#{@owner.first_name} #{@owner.last_name}" %></h1></th>
   </tr>
 
-  <tr>
-    <th colspan="2"><a href="/owners/<%= @owner.id %>/edit">Edit Owner</a></th>
-  </tr>
-
-  <tr>
-    <td><label for="owner[name]">Name:</label></td>
-    <td id="owner[name]"><%= "#{@owner.first_name} #{@owner.last_name}" %></td>
-  </tr>
 
   <tr>
     <td><label for="owner[phone]">Phone #:</label></td>
@@ -54,4 +46,62 @@
       <td id="owner[lockbox_code]"><%= @owner.lockbox_code %></td>
   </tr>
 
+  <% if !@owner.dogs.empty? %>
+  <tr>
+    <td>Pets:</td>
+    <td>
+  <% @owner.dogs.each do |dog| %>
+      <a href="/dogs/<%= dog.id %>"><%= dog.name %></a>
+  <% end %>
+  </td>
+  </tr>
+  <% end %>
+
+  <tr>
+    <th colspan="2"><a class="w3-btn w3-yellow w3-bar" href="/owners/<%= @owner.id %>/edit">Edit Owner</a></th>
+  </tr>
 </table>
+<form action="/dogs" method="post">
+  <input class="w3-select" type="hidden" name="dog[owner_id]"value="<%= @owner.id %>">
+<table class="w3-table">
+
+  <tr>
+    <th><h1>New Dog</h1></th>
+  </tr>
+
+  <tr>
+    <td><label for="dog[name]">Name:</label></td>
+    <td><input class="w3-input" type="text" name="dog[name]" id="dog[name]"></td>
+  </tr>
+
+  <tr>
+    <td><label for="dog[breed]">Breed:</label></td>
+    <td><input class="w3-input" type="text" name="dog[breed]" id="dog[breed]"></td>
+  </tr>
+
+  <tr>
+    <td><label for="dog[birthday]">Birthday:</label></td>
+    <td><input class="w3-input" type="date" name="dog[birthday]" id="dog[birthday]"></td>
+  </tr>
+
+  <tr>
+    <td><label for="dog[appearance]">Appearance:</label></td>
+    <td><input class="w3-input" type="text" id="dog[appearance]" name="dog[appearance]"></td>
+  </tr>
+
+  <tr>
+    <td><label for="dog[temperament]">Temperament:</label></td>
+    <td><input class="w3-input" type="text" name="dog[temperament]" id="dog[temperament]"></td>
+  </tr>
+
+  <tr>
+    <td><label for="dog[notes]">Notes:</label></td>
+    <td><input class="w3-input" type="text" name="dog[notes]" id="dog[notes]"></td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td><input class="w3-btn w3-bar w3-green" type="submit"></td>
+  </tr>
+</table>
+</form>

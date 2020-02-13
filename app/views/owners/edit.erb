@@ -1,71 +1,73 @@
-<h1>Edit Owner</h1>
 
-<form action="/owners/<%= @owner.id %>" method="post">
-  <input type="hidden" name="_method" value="patch">
-<table>
+
+<table class="w3-table">
+  <form action="/owners/<%= @owner.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+  <tr>
+      <th><h1>Edit Owner</h1></th>
+  </tr>
+
   <tr>
     <td><label for="owner[first_name]">First Name:</label></td>
-    <td><input type="text" name="owner[first_name]" value="<%= @owner.first_name %>"></td>
+    <td><input class="w3-input" type="text" name="owner[first_name]" value="<%= @owner.first_name %>"></td>
   </tr>
 
   <tr>
     <td><label for="owner[last_name]">Last Name:</label></td>
-    <td><input type="text" name="owner[last_name]" value="<%= @owner.last_name %>"></td>
+    <td><input class="w3-input" type="text" name="owner[last_name]" value="<%= @owner.last_name %>"></td>
   </tr>
 
   <tr>
     <td><label for="owner[phone]">Phone #:</label></td>
-    <td><input type="tel" name="owner[phone]" value="<%= @owner.phone %>"></td>
+    <td><input class="w3-input" type="tel" name="owner[phone]" value="<%= @owner.phone %>"></td>
   </tr>
 
   <tr>
     <td><label for="owner[phone2]">Phone 2 #:</label></td>
-    <td><input type="tel" name="owner[phone2]" value="<%= @owner.phone2 %>"></td>
+    <td><input class="w3-input" type="tel" name="owner[phone2]" value="<%= @owner.phone2 %>"></td>
   </tr>
 
   <tr>
     <td><label for="owner[address]">Address:</label></td>
-    <td><input type="text" name="owner[address]" value="<%= @owner.address %>"></td>
+    <td><input class="w3-input" type="text" name="owner[address]" value="<%= @owner.address %>"></td>
   </tr>
 
   <tr>
     <td><label for="owner[apartment_number]">Apartment #:</label></td>
-    <td><input type="text" name="owner[apartment_number]" value="<%= @owner.apartment_number %>"></td>
+    <td><input class="w3-input" type="text" name="owner[apartment_number]" value="<%= @owner.apartment_number %>"></td>
   </tr>
 
   <tr>
     <td><label for="owner[zip_code]">Zip Code:</label></td>
-    <td><input type="text" name="owner[zip_code]" value="<%= @owner.zip_code %>"></td>
+    <td><input class="w3-input" type="text" name="owner[zip_code]" value="<%= @owner.zip_code %>"></td>
   </tr>
 
   <tr>
     <td><label for="owner[instructions]">Entry Instructions:</label></td>
-    <td><input type="text" name="owner[instructions]" value="<%= @owner.instructions %>"></td>
+    <td><input class="w3-input" type="text" name="owner[instructions]" value="<%= @owner.instructions %>"></td>
   </tr>
 
   <tr>
     <td><label for="owner[door_code]">Door Code:</label></td>
-    <td><input type="text" name="owner[door_code]" value="<%= @owner.door_code %>"></td>
+    <td><input class="w3-input" type="text" name="owner[door_code]" value="<%= @owner.door_code %>"></td>
   </tr>
 
   <tr>
     <td><label for="owner[lockbox_code]">Lockbox Code:</label></td>
-    <td><input type="text" name="owner[lockbox_code]" value="<%= @owner.lockbox_code %>"></td>
+    <td><input class="w3-input" type="text" name="owner[lockbox_code]" value="<%= @owner.lockbox_code %>"></td>
   </tr>
 
   <tr>
-    <td></td>
-    <td><input type="submit"></td>
+    <td colspan="2"><input class="w3-btn w3-bar w3-green" type="submit" name="submit"></td>
+  </tr>
+
+</form>
+  <tr>
+    <td colspan="2">
+      <form action="/owners/<%= @owner.id %>/delete" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input class="w3-btn w3-red" type="submit" name="delete" value="Delete Owner">
+      </form>
+    </td>
   </tr>
 </table>
-</form>
-
-
-<form action="/owners/<%= @owner.id %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="submit" name="delete" value="Delete Owner">
-</form>
-
-<nav>
-  <a href="/owners/<%= @owner.id %>">Back</a>
-</nav>

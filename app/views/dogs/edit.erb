@@ -1,5 +1,3 @@
-
-
 <table class="w3-table">
   <form action="/dogs/<%= @dog.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
@@ -25,6 +23,11 @@
   </tr>
 
   <tr>
+    <td><label for="dog[appearance]">Appearance:</label></td>
+    <td><input class="w3-input" type="text" id="dog[appearance]" name="dog[appearance]" value="<%= @dog.appearance %>"></td>
+  </tr>
+
+  <tr>
     <td><label for="dog[temperament]">Temperament:</label></td>
     <td><input class="w3-input" type="text" id="dog[temperament]" name="dog[temperament]" value="<%= @dog.temperament %>"></td>
   </tr>
@@ -44,7 +47,7 @@
   <td>
     <form action="/dogs/<%= @dog.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
-      <input type="submit" name="delete" value="Delete Dog">
+      <input class="w3-btn w3-bar w3-red" type="submit" name="delete" value="Delete Dog">
     </form>
   </td>
 </tr>
