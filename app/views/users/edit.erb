@@ -1,45 +1,62 @@
-<h1>Edit User</h1>
-
-<% if @user.errors %>
-  <ol>
-  <% @user.errors.full_messages.each do |error| %>
-  <li><%= error.to_sentence %></li>
-  <% end %>
-</ol>
+<% if @user.errors.any? %>
+  <div class="w3-panel w3-red">
+    <%= @user.errors.full_messages %>
+  </div>
 <% end %>
+
 
 <form action="/users/<%= @user.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
-<table>
+<table class="w3-table">
+  <tr>
+    <th colspan="2"><h1>Edit User</h1></th>
+  </tr>
+
+  <% if flash.has?(:message) %>
+  <tr>
+    <td colspan="2" class="w3-panel w3-red">
+      <%= flash[:message] %>
+    </td>
+  </tr>
+  <% end %>
+
   <tr>
     <td><label for="user[first_name]">First Name:</label></td>
-    <td><input type="text" name="user[first_name]" value="<%= @user.first_name %>"></td>
+    <td><input class="w3-input" id="user[first_name]" type="text" name="user[first_name]" value="<%= @user.first_name %>"></td>
   </tr>
 
   <tr>
     <td><label for="user[last_name]">Last Name:</label></td>
-    <td><input type="text" name="user[last_name]" value="<%= @user.last_name %>"></td>
+    <td><input class="w3-input" id="user[last_name]" type="text" name="user[last_name]" value="<%= @user.last_name %>"></td>
   </tr>
 
   <tr>
     <td><label for="user[email]">Email:</label></td>
-    <td><input type="text" name="user[email]" value="<%= @user.email %>"></td>
+    <td><input class="w3-input" id="user[email]" type="text" name="user[email]" value="<%= @user.email %>"></td>
+  </tr>
+
+  <tr>
+    <td><label for="user[password]">Password:</label></td>
+    <td><input class="w3-input" type="password" name="user[password]" required></td>
   </tr>
 
   <tr>
     <td></td>
-    <td><input type="submit" value="Update"></td>
+    <td><input class="w3-btn w3-green w3-bar" type="submit" value="Update"></td>
   </tr>
-</table>
 </form>
 
-<% if logged_in? and @user.id == current_user.id %>
-<form action="/users/<%= @user.id %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <label for="delete">Delete My Account: </label>
-  <input type="submit" name="delete" value="Delete Account">
-</form
-<% end %>
-<nav>
-  <a href="/users/<%= @user.id %>">Back</a>
-</nav>
+  <% if logged_in? and @user.id == current_user.id %>
+  <tr>
+    <td>
+      <form action="/users/<%= @user.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <label for="delete">Delete My Account: </label>
+    </form>
+    </td>
+    <td>
+      <input class="w3-red w3-btn" type="submit" name="delete" value="Delete Account">
+    </td>
+  </tr>
+  <% end %>
+</table>

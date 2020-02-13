@@ -4,13 +4,17 @@
   </tr>
 
   <tr>
-    <th>
-      <a href="/owners/new">Create New Owner</a>
-    </th>
-    <th>
-      <a href="/import">Import Google CSV</a>
+    <th colspan="2">
+      <a class="w3-btn w3-blue w3-bar" href="/import">Import Google CSV</a>
     </th>
   </tr>
+
+  <tr>
+    <th colspan="2">
+      <a class="w3-btn w3-green w3-bar" href="/owners/new">Create New Owner</a>
+    </th>
+  </tr>
+
 
 <% Owner.all.each do |owner| %>
 <tr>

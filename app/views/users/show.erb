@@ -4,11 +4,6 @@
     <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1></th>
   </tr>
 
-  <tr>
-    <th colspan="2">
-      <a href="/users/<%= @user.id %>/edit">Edit User</a>
-    </th>
-  </tr>
 
   <tr>
     <td><label for="first_name">First Name:</label></td>
@@ -16,7 +11,20 @@
   </tr>
 
   <tr>
-    <td><label for="user_email">Email: </label></td>
-    <td id="user_email"><%= @user.email %></td>
+    <td>
+      <label for="user_email">Email: </label>
+    </td>
+    <td id="user_email">
+      <%= @user.email %>
+    </td>
   </tr>
+
+  <% if @user == current_user %>
+  <tr>
+    <th colspan="2">
+      <a class="w3-btn w3-yellow w3-bar" href="/users/<%= @user.id %>/edit">Edit User Info</a>
+    </th>
+  </tr>
+  <% end %>
+  
 </table>

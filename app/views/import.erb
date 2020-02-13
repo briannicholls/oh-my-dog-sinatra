@@ -1,17 +1,43 @@
-<h1>Import Contacts</h1>
+<table class="w3-table">
+  <tr>
+    <th colspan="2">
+      <h1>Import Contacts</h1>
+    </th>
+  </tr>
 
-<h2>Instructions</h2>
+  <tr>
+    <th colspan="2"><h2>Instructions</h2></th>
+  </tr>
 
-<p>1. Go to https://contacts.google.com/</p>
+  <tr>
+    <td colspan="2">
+      <ol>
+        <li>
+          Go to https://contacts.google.com/
+        </li>
+        <li>
+          In the menu, choose "Export", then "Google CSV"
+        </li>
+        <li>
+          Click "Import Contacts" below and choose the CSV you exported.
+        </li>
+      </ol>
+    </td>
+  </tr>
 
-<p>2. In the menu, choose "Export", then "Google CSV"</p>
+  <form action="/import" method="post" enctype="multipart/form-data">
+  <tr>
+    <td colspan="2">
+      <label for="file">Choose File:</label>
+      <input class="w3-btn" type="file" accept=".csv" name="file" id="file">
+    </td>
+  </tr>
 
-<p>3. Click "Import Contacts" below and choose the CSV you exported.</p>
+  <tr>
+    <td colspan="2">
+      <input class="w3-btn w3-green w3-bar" type="submit" name="submit" value="Import!">
+    </td>
+  </tr>
 
-<form action="/import" method="post" enctype="multipart/form-data">
-
-  <label for="file">Choose File: </label>
-  <input type="file" accept=".csv" name="file">
-
-  <input type="submit" name="submit" value="Import!">
-</form>
+  </form>
+</table>
