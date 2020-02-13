@@ -10,18 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_12_074300) do
+ActiveRecord::Schema.define(version: 2020_02_13_105750) do
 
-  create_table "dogs", force: :cascade do |t|
-    t.string "name"
-    t.integer "owner_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "breed"
-    t.datetime "birthday"
-    t.string "temperament"
-    t.string "notes"
-  end
+# Could not dump table "dogs" because of following StandardError
+#   Unknown type 'strings' for column 'appearance'
 
   create_table "owners", force: :cascade do |t|
     t.string "first_name"
@@ -39,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_02_12_074300) do
     t.string "entry_instructions"
     t.string "instructions"
     t.string "neighborhood"
+    t.string "phone2"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_02_12_074300) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "role"
   end
 
   create_table "walks", force: :cascade do |t|
