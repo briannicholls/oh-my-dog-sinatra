@@ -23,10 +23,10 @@ CSV files should be placed and named appropriatelyin `db/import/csv/[model].csv`
 
 First import Owners, then Dogs:
 
-   `ruby
+   ```ruby
    rake import_owners_from_csv
    rake import_dogs_from_csv
-   `
+   ```
    The import methods will look for the following column headers, feel free to adjust the import methods for importing different attributes:
 
    ```ruby
