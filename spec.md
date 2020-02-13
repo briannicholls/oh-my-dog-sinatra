@@ -27,8 +27,7 @@ To Do:
 - [ ] Add Rates to owners
 
 Stretch goals:
-- [ ] Add support for second owner or additional contact #
-- [ ] Add pet list for users/show
+- [ ] Add pet list for owners/show
 - [ ] Add sort feature to lists
 - [ ] Walks index initially shows only today's walks
 - [ ] Add Owner notes to dogs/show

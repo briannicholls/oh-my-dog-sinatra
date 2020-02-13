@@ -24,7 +24,9 @@
 
   <td>
     <% if !owner.dogs.empty? %>
-      <a href="/dogs/<%= owner.dogs.first.id %>"><%= owner.dogs.first.name  %></a>
+    <% owner.dogs.each do |dog| %>
+      <a href="/dogs/<%= dog.id %>"><%= dog.name %></a>
+    <% end %>
     <% end %>
   </td>
 </tr>

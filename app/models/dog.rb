@@ -4,8 +4,8 @@ class Dog < ActiveRecord::Base
   has_many :walks
   has_many :users, through: :walks
 
-  def birthdate
-      self.birthday.strftime('%Y-%m-%d')
-  end
+#  def birthdate
+#      self.birthday.strftime('%Y-%m-%d')
+#  end
 
 end
