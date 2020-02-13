@@ -10,4 +10,11 @@ class User < ActiveRecord::Base
   has_many :owner_walks
   has_many :owners, through: :owner_walks
 
+  def name
+    if self.last_name
+      "#{self.first_name} #{self.last_name}"
+    else
+      self.first_name
+    end
+  end
 end
