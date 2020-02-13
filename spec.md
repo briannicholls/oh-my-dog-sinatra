@@ -20,13 +20,14 @@ Confirm
 - [x] You don't include changes in a commit that aren't related to the commit message
 
 To Do:
-- [ ] Add duration to walks or walk_length to dog
-- [ ] Add Rates to owners
-- [ ] Add color/appearance for dogs
-- [ ] Add role to users
+- [x] Add duration to walks or walk_length to dog
+- [x] Add color/appearance for dogs
+- [x] Add role to users
 - [ ] Add 'completed' field for walks
+- [ ] Add Rates to owners
 
 Stretch goals:
+- [ ] Add support for second owner or additional contact #
 - [ ] Add pet list for users/show
 - [ ] Add sort feature to lists
 - [ ] Walks index initially shows only today's walks
@@ -36,11 +37,11 @@ Stretch goals:
 - [ ] Paginate owners index
 - [ ] Add cats!
 - [ ] Add 'Pet' class inherited by cats & dogs
-- [ ] Add reset/forgot password function
-- [ ] Add support for second owner or additional contact #
+- [ ] Add feature: reset/forgot password
 - [ ] Add photo for Dogs
 - [ ] Add option to make walks recurring
 
 
 Problems:
 - Anyone can sign up. Need to default to non-admin
+- Sibling walks. Should a walk have many dogs?
