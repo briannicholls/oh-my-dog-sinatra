@@ -39,7 +39,7 @@ class OwnersController < ApplicationController
     end
   end
 
-  delete '/owners/:id' do
+  delete '/owners/:id/delete' do
     @owner = Owner.find_by(id: params[:id])
     if @owner.delete
       redirect '/owners'

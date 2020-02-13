@@ -1,10 +1,19 @@
 class DogsController < ApplicationController
   get '/dogs' do
-    erb :'/dogs/index'
+    if logged_in?
+      erb :'/dogs/index'
+    else
+      redirect '/'
+    end
   end
 
   get '/dogs/new' do
-    erb :'/dogs/new'
+    binding.pry
+    if logged_in?
+      erb :'/dogs/new'
+    else
+      redirect '/'
+    end
   end
 
   post '/dogs' do

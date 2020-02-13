@@ -1,11 +1,19 @@
 class WalksController < ApplicationController
 
   get '/walks' do
-    erb :'/walks/index'
+    if logged_in?
+      erb :'/walks/index'
+    else
+      redirect '/'
+    end
   end
 
   get '/walks/new' do
-    erb :'/walks/new'
+    if logged_in?
+      erb :'/walks/new'
+    else
+      redirect '/'
+    end
   end
 
   post '/walks' do
