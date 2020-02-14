@@ -7,8 +7,8 @@ class SessionsController < ApplicationController
       erb :'/walks/index'
     else
       flash[:message] = "Incorrect email or password."
+      erb :'/signin'
     end
-    erb :'/signin'
   end
 
   get '/logout' do
