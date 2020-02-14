@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_13_105750) do
+ActiveRecord::Schema.define(version: 2020_02_13_174538) do
 
 # Could not dump table "dogs" because of following StandardError
 #   Unknown type 'strings' for column 'appearance'
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2020_02_13_105750) do
     t.string "notes"
     t.string "duration"
     t.datetime "date"
+    t.boolean "completed?"
   end
 
 end
