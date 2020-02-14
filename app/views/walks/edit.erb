@@ -72,6 +72,14 @@
   </tr>
 
   <tr>
+    <td><label for="walk[completed?]">Completed?</label></td>
+    <td><select class="w3-select" name="walk[completed?]">
+      <option value="true" <%= "selected" if @walk.completed? %>>Yes</option>
+      <option value="false" <%= "selected" if !@walk.completed? %>>No</option>
+    </select></td>
+  </tr>
+
+  <tr>
     <td colspan="2">
       <input type="submit" name="submit" class="w3-btn w3-green w3-bar" value="Update">
     </td>

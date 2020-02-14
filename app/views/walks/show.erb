@@ -11,6 +11,14 @@
   </tr>
   <% end %>
 
+  <% if @walk.completed? %>
+  <tr>
+    <td class="w3-bar w3-green w3-padding-small" colspan="2">
+      <em>Walk Complete!</em>
+    </td>
+  </tr>
+  <% end %>
+
   <tr>
     <td colspan="2">
       <h4>Pickup Window: <strong><%= @walk.window_start.strftime('%l:%M%P') %> - <%= @walk.window_end.strftime('%l:%M%P') %></strong></h4>
@@ -25,16 +33,16 @@
   </tr>
 
   <tr>
-    <td><label for="walk[address]">Address:</label></td>
-    <td id="walk[address]">
-      <%= @walk.dog.owner.address %>
-    </td>
+    <td><label for="owner">Owner:</label></td>
+    <td><a href="/owners/<%= @walk.dog.owner.id %>"><%= @walk.dog.owner.name %></a></td>
   </tr>
 
   <tr>
-    <td><label for="walk[apartment_number]">Apt. #:</label></td>
-    <td id="walk[apartment_number]">
-      <%= @walk.dog.owner.apartment_number %>
+    <td><label for="walk[address]">Address:</label></td>
+    <td id="walk[address]">
+      <%= "#{@walk.dog.owner.address}" %> <br>
+      <%="#{@walk.dog.owner.apartment_number}" %> <br>
+      <%= "#{@walk.dog.owner.zip_code}" %>
     </td>
   </tr>
 
@@ -73,8 +81,19 @@
 
   <tr>
     <th colspan="2">
-      <a class="w3-bar w3-btn w3-yellow" href="/walks/<%= @walk.id %>/edit">Edit Walk</a>
+      <form action="/walks/<%= @walk.id %>" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <input type="hidden" name="id" value="<%= @walk.id %>">
+        <input type="hidden" name="walk[completed?]" value="true">
+        <input class="w3-bar w3-btn w3-green" type="submit" name="submit" value="Mark Complete">
+      </form>
     </th>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+      <a class="w3-bar w3-btn w3-yellow" href="/walks/<%= @walk.id %>/edit">Edit Walk</a>
+    </td>
   </tr>
 
 </table>

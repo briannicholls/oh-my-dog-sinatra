@@ -16,17 +16,22 @@
     <th>Address</th>
   </tr>
 
-  <% Walk.all.select{ |w| w.date.today? }.each do |walk| %>
+  <% Walk.all.select{ |w| w.date.today? && !w.completed? }.each do |walk| %>
 
   <tr>
     <td><strong><%= walk.dog.name %></strong></td>
     <td>
       <a href="/walks/<%= walk.id %>"><%= "#{walk.window_start.strftime('%H:%M')} - #{walk.window_end.strftime('%H:%M')}" %></a>
     </td>
-    <td><%= "#{walk.dog.owner.address}" %>
+    <td>
+      <%= "#{walk.dog.owner.address}" %>
       <%= " #{walk.dog.owner.apartment_number}" if !walk.dog.owner.apartment_number.empty? %>
     </td>
   </tr>
   <% end %>
+
+  <tr>
+    <th colspan="3"><a class="w3-btn w3-blue" href="/walks/all">Show All Walks</a></th>
+  </tr>
 
 </table>
