@@ -1,35 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
-
-/*
-body {
-  background-color: #707070;
-}
-
-table {
-  margin: auto;
-  padding: 5px;
-  background-color: #69AF69;
-  width: 80%;
-}
-
-td {
-  align-self: flex-end;
-  padding: 4px;
-}
-
-*/
-
-* {
-  align-items: center;
-  align-content: center;
-  align-self: center;
-}
-
-table {
-  width: 80%;
-  background-color: white;
-}
-
+/*  */
+/* * { */
+/*   align-items: center; */
+/*   align-content: center; */
+/*   align-self: center; */
+/* } */
+/*  */
+/* table { */
+/*   width: 80%; */
+/*   background-color: white; */
+/* } */
+/*  */
 body {
   background-color: #888888;
   display: flex;
