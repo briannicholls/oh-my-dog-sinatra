@@ -6,13 +6,11 @@
 /*   align-self: center; */
 /* } */
 /*  */
-/* table { */
-/*   width: 80%; */
-/*   background-color: white; */
-/* } */
+table {
+  background-color: white;
+}
 /*  */
 body {
-  background-color: #888888;
   display: flex;
 }
 
@@ -27,10 +25,6 @@ nav {
 
 nav a {
   text-decoration: none;
-}
-
-header {
-  padding-top: 15px;
 }
 
 .w3-btn {
