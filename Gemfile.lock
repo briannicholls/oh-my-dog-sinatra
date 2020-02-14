@@ -81,7 +81,6 @@ GEM
       activerecord (>= 3.2)
       sinatra (>= 1.0)
     smarter_csv (1.2.6)
-    sqlite3 (1.4.2)
     thin (1.7.2)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -115,7 +114,6 @@ DEPENDENCIES
   sinatra
   sinatra-activerecord
   smarter_csv
-  sqlite3
   thin
 
 BUNDLED WITH
