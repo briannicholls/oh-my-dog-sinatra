@@ -1,0 +1,33 @@
+
+
+<table class="w3-table">
+  <tr>
+    <th colspan="3"><h1>All Walks</h1></th>
+  </tr>
+<tr>
+  <th colspan="3">
+    <a class="w3-btn w3-green w3-bar" href="/walks/new">Create New Walk</a>
+  </th>
+</tr>
+
+  <tr>
+    <th></th>
+    <th>Pick-Up Window</th>
+    <th>Address</th>
+  </tr>
+
+  <% Walk.all.each do |walk| %>
+
+  <tr>
+    <td><strong><%= walk.dog.name %></strong></td>
+    <td>
+      <a href="/walks/<%= walk.id %>"><%= "#{walk.window_start.strftime('%H:%M')} - #{walk.window_end.strftime('%H:%M')}" %></a>
+    </td>
+    <td>
+      <%= "#{walk.dog.owner.address}" %>
+      <%= " #{walk.dog.owner.apartment_number}" if !walk.dog.owner.apartment_number.empty? %>
+    </td>
+  </tr>
+  <% end %>
+
+</table>
