@@ -17,13 +17,15 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    @user = User.new(params[:user])
-    if @user.save
-      session[:user_id] = @user.id
-      redirect '/walks'
-    else
-      erb :'/users/new'
-    end
+    flash[:message] = "New Users currently prohibited. Contact admin."
+    erb :error
+    # @user = User.new(params[:user])
+    # if @user.save
+    #   session[:user_id] = @user.id
+    #   redirect '/walks'
+    # else
+    #   erb :'/users/new'
+    # end
   end
 
   get '/users/:id' do
