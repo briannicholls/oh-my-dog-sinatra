@@ -6,7 +6,7 @@
     <title>Oh My Dog! Pet Care</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <link rel="stylesheet" href="/css/style.css" type="text/css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   </head>
@@ -17,11 +17,11 @@
   <header>
     <% if logged_in? %>
     <nav class="w3-bar w3-black">
-      <a href="/users">Users</a> |
-      <a href="/owners">Owners</a> |
-      <a href="/dogs">Dogs</a> |
-      <a href="/walks">Walks</a> ||
-      <a href="/logout">Log Out</a>
+      <a class="w3-bar-item" href="/users">Users</a>
+      <a class="w3-bar-item" href="/owners">Owners</a>
+      <a class="w3-bar-item" href="/dogs">Dogs</a>
+      <a class="w3-bar-item" href="/walks">Walks</a>
+      <a class="w3-bar-item" href="/logout">Log Out</a>
     </nav>
     <% end %>
   </header>
