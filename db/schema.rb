@@ -12,8 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2020_02_13_174538) do
 
-# Could not dump table "dogs" because of following StandardError
-#   Unknown type 'strings' for column 'appearance'
+  create_table "dogs", force: :cascade do |t|
+    t.string "name"
+    t.integer "owner_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "breed"
+    t.datetime "birthday"
+    t.string "temperament"
+    t.string "notes"
+    t.string "appearance"
+  end
 
   create_table "owners", force: :cascade do |t|
     t.string "first_name"
