@@ -6,8 +6,6 @@
 /pkg/
 /spec/reports/
 /tmp/
-/db/*.sqlite
-/db/import/csv/*
 /lib/contacts.csv
 
 # rspec failure tracking
