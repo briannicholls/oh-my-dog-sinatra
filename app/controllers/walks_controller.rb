@@ -16,6 +16,14 @@ class WalksController < ApplicationController
     end
   end
 
+  get '/walks/all' do
+    if logged_in?
+      erb :'/walks/all_walks'
+    else
+      redirect '/'
+    end
+  end
+
   post '/walks' do
     @walk = Walk.new(params[:walk])
     w_start = time_to_datetime(params[:walk][:window_start], @walk.date)
@@ -48,13 +56,16 @@ class WalksController < ApplicationController
   end
 
   patch '/walks/:id' do
+
     @walk = Walk.find_by(id: params[:id])
-    params[:walk][:window_start] = Time.parse(
-      "#{params[:walk][:date]}T#{params[:walk][:window_start]}Z"
-    )
-    params[:walk][:window_end] = Time.parse(
-      "#{params[:walk][:date]}T#{params[:walk][:window_end]}Z"
-    )
+    if params[:walk][:window_start] and params[:walk][:window_end]
+      params[:walk][:window_start] = Time.parse(
+        "#{params[:walk][:date]}T#{params[:walk][:window_start]}Z"
+      )
+      params[:walk][:window_end] = Time.parse(
+        "#{params[:walk][:date]}T#{params[:walk][:window_end]}Z"
+      )
+    end
     if @walk and @walk.update(params[:walk])
       flash[:message] = "Update successful!"
       redirect "/walks/#{@walk.id}"
