@@ -1,5 +1,5 @@
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
 
 production:
   adapter: postgresql
@@ -9,7 +9,3 @@ development:
   <<: *default
   adapter: postgresql
   database: 'db/development'
-
-test:
-  <<: *default
-  database: 'db/test.sqlite'

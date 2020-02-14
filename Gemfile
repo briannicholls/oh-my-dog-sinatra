@@ -2,7 +2,6 @@ source "https://rubygems.org"
 
 gem 'activerecord', '~>6.0'
 gem 'sinatra-activerecord', require: 'sinatra/activerecord'
-gem 'sqlite3'
 gem 'pg'
 gem 'sinatra'
 gem 'thin'
