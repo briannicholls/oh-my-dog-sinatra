@@ -1,0 +1,8 @@
+<h1>Woof! Something happened.</h1>
+<div class="error w3-panel w3-red">
+  <% if flash.has?(:message) %>
+  <div>
+      <%= flash[:message] %>
+  </div>
+  <% end %>
+</div>
