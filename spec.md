@@ -19,28 +19,20 @@ Confirm
 - [x] You made the changes in a commit that relate to the commit message
 - [x] You don't include changes in a commit that aren't related to the commit message
 
-To Do:
-- [x] Add duration to walks or walk_length to dog
-- [x] Add color/appearance for dogs
-- [x] Add role to users
-- [ ] Add 'completed' field for walks
-- [ ] Add Rates to owners
-
 Stretch goals:
-- [ ] Add pet list for owners/show
+- [x] Walks index initially shows only today's walks
+- [x] Add dog creation form along with owner
+- [ ] Add photo for Dogs
 - [ ] Add sort feature to lists
-- [ ] Walks index initially shows only today's walks
-- [ ] Add Owner notes to dogs/show
-- [ ] Add dog creation form along with owner
+- [ ] Add Rates to owners
 - [ ] Add 'delete' confirmation
 - [ ] Paginate owners index
 - [ ] Add cats!
 - [ ] Add 'Pet' class inherited by cats & dogs
 - [ ] Add feature: reset/forgot password
-- [ ] Add photo for Dogs
 - [ ] Add option to make walks recurring
+- [ ] Generate invoices with price from walks
 
 
 Problems:
 - Anyone can sign up. Need to default to non-admin
-- Sibling walks. Should a walk have many dogs?
