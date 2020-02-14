@@ -30,13 +30,21 @@ class WalksController < ApplicationController
   end
 
   get '/walks/:id' do
-    @walk = Walk.find_by(id: params[:id])
-    erb :'/walks/show'
+    if logged_in?
+      @walk = Walk.find_by(id: params[:id])
+      erb :'/walks/show'
+    else
+      redirect '/'
+    end
   end
 
   get '/walks/:id/edit' do
-    @walk = Walk.find_by(id: params[:id])
-    erb :'/walks/edit'
+    if logged_in?
+      @walk = Walk.find_by(id: params[:id])
+      erb :'/walks/edit'
+    else
+      redirect '/'
+    end
   end
 
   patch '/walks/:id' do
