@@ -25,7 +25,7 @@
     </td>
     <td>
       <%= "#{walk.dog.owner.address}" %>
-      <%= " #{walk.dog.owner.apartment_number}" if !walk.dog.owner.apartment_number.empty? %>
+      <%= " #{walk.dog.owner.apartment_number}" if walk.dog.owner.apartment_number %>
     </td>
   </tr>
   <% end %>
