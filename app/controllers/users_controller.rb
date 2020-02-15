@@ -39,10 +39,10 @@ class UsersController < ApplicationController
 
   get '/users/:id/edit' do
     @user = User.find_by(id: params[:id])
-    if logged_in?
+    if logged_in? and @user.id == session[:user_id]
       erb :'/users/edit'
     else
-      redirect '/'
+      redirect '/users'
     end
   end
 
