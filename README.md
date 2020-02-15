@@ -6,15 +6,21 @@ Keeps track of all walks, dogs, owners, and users.
 
 Uses bcrypt for user password authentication.
 
-Support for importing contacts from CSV.
+Support for importing contacts from Google CSV.
+
+Video Demo: https://youtu.be/5ShkF0Aagqo
+
+Blog post: https://briannicholls.home.blog/2020/02/15/sinatra-project-web-app-for-a-dog-walking-business/
 
 ## Installation
 
+Download the repo, navigate to the root directory and run `bundle install`
 
+Run `shotgun` to start the application on a localhost. You can also use `rake console` to seed the database, or use the import function to import your own contacts (see below).
 
 ## Usage
 
-
+After creating a User account, you will be able to log in. There are four views, Owners, Dogs, Users, and Walks. You can only delete your own user account (admin support will eventually come).
 
 ## Importing from .CSV
 
