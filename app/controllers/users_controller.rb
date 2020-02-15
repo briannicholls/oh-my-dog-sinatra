@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     end
   end
 
-  delete '/users/:id' do
+  delete '/users/:id/delete' do
     @user = User.find_by(id: params[:id])
     if @user.delete
       session.clear

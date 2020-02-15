@@ -5,9 +5,9 @@
 <% end %>
 
 
-<form action="/users/<%= @user.id %>" method="post">
-  <input type="hidden" name="_method" value="patch">
 <table class="w3-table">
+  <form action="/users/<%= @user.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
   <tr>
     <th colspan="2"><h1>Edit User</h1></th>
   </tr>
@@ -41,21 +41,18 @@
   </tr>
 
   <tr>
-    <td></td>
-    <td><input class="w3-btn w3-green w3-bar" type="submit" value="Update"></td>
+    <td colspan="2"><input class="w3-btn w3-green w3-bar" type="submit" value="Update"></td>
   </tr>
 </form>
 
   <% if logged_in? and @user.id == current_user.id %>
   <tr>
+    <td><label for="delete">Delete My Account: </label></td>
     <td>
-      <form action="/users/<%= @user.id %>" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <label for="delete">Delete My Account: </label>
-    </form>
-    </td>
-    <td>
-      <input class="w3-red w3-btn" type="submit" name="delete" value="Delete Account">
+      <form action="/users/<%= @user.id %>/delete" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input class="w3-red w3-btn" type="submit" name="delete" value="Delete Account">
+      </form>
     </td>
   </tr>
   <% end %>
