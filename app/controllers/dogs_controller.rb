@@ -8,7 +8,6 @@ class DogsController < ApplicationController
   end
 
   get '/dogs/new' do
-    binding.pry
     if logged_in?
       erb :'/dogs/new'
     else
