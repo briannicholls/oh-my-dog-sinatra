@@ -1,7 +1,7 @@
 require_relative './config/environment'
 require_relative './lib/contacts_importer'
 require 'sinatra/activerecord/rake'
-require 'dotenv/tasks'
+#require 'dotenv/tasks'
 
 desc 'Start the console'
 task :console do
