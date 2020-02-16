@@ -16,7 +16,10 @@ gem 'rack-flash3', require: 'rack-flash'
 gem 'json'
 gem 'nyc_neighborhoods'
 gem 'imgur-api', require: 'imgur'
-gem 'dotenv'
+
+group :development do
+  gem 'dotenv'  
+end
 
 group :test do
   gem "rspec", "~> 3.0"
