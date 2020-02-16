@@ -10,3 +10,4 @@
 /db/import/csv/*
 # rspec failure tracking
 .rspec_status
+.env
