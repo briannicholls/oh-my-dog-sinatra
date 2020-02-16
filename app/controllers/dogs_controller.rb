@@ -25,21 +25,32 @@ class DogsController < ApplicationController
   end
 
   get '/dogs/:id' do
-    @dog = Dog.find_by(id: params[:id])
-    if @dog
-      erb :'/dogs/show'
+    if logged_in?
+      @dog = Dog.find_by(id: params[:id])
+      if @dog
+        erb :'/dogs/show'
+      else
+        redirect '/dogs'
+      end
     else
-      redirect '/dogs'
+      redirect '/'
     end
   end
 
   get '/dogs/:id/edit' do
-    @dog = Dog.find_by(id: params[:id])
-    erb :'/dogs/edit'
+    if logged_in?
+      @dog = Dog.find_by(id: params[:id])
+      erb :'/dogs/edit'
+    else
+      redirect '/'
+    end
   end
 
   patch '/dogs/:id' do
     @dog = Dog.find_by(id: params[:id])
+    if !!params[:photo][:tempfile]
+      @dog.image = photo_upload(params[:photo][:tempfile].path, @dog.name)
+    end
     if @dog and @dog.update(params[:dog])
       redirect "/dogs/#{@dog.id}"
     else
@@ -55,4 +66,12 @@ class DogsController < ApplicationController
       redirect "/dogs/#{@dog.id}"
     end
   end
+
+  def photo_upload(image_file, title)
+    client = Imgur.new(ENV['CLIENT_ID'])
+    image = Imgur::LocalImage.new(image_file, title: title)
+    uploaded = client.upload image
+    uploaded.link
+  end
+
 end

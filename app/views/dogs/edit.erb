@@ -1,5 +1,5 @@
-<table class="w3-table">
-  <form action="/dogs/<%= @dog.id %>" method="post">
+<table class="w3-table w3-bordered">
+  <form action="/dogs/<%= @dog.id %>" method="post" enctype="multipart/form-data">
     <input type="hidden" name="_method" value="patch">
   <tr>
     <th colspan="2">
@@ -35,6 +35,10 @@
   <tr>
     <td><label for="dog[notes]">Notes:</label></td>
     <td><input class="w3-input" type="text" id="dog[notes]" name="dog[notes]" value="<%= @dog.notes %>"></td>
+  </tr>
+
+  <tr>
+    <td colspan="2"><label for="photo">Add Photo: </label><input type="file" name="photo"></td>
   </tr>
 
   <tr>
