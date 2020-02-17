@@ -46,5 +46,9 @@ class ApplicationController < Sinatra::Base
       User.find_by(id: session[:user_id])
     end
 
+    def admin?
+      current_user.role == 'admin'
+    end
+
   end
 end
