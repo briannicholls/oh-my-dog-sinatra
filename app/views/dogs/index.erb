@@ -13,7 +13,7 @@
       <a href="/dogs/<%= dog.id %>"><%= "#{dog.name}" %></a>
     </td>
 
-    <td><%= dog.owner.neighborhood %></td>
+    <td><%= "#{dog.owner.address} #{dog.owner.apartment_number}" %></td>
   </tr>
   <% end %>
 </table>
