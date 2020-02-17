@@ -8,7 +8,11 @@ class OwnersController < ApplicationController
   end
 
   get '/owners/new' do
-    erb :'/owners/new'
+    if logged_in?
+      erb :'/owners/new'
+    else
+      redirect '/'
+    end
   end
 
   post '/owners' do
@@ -21,20 +25,30 @@ class OwnersController < ApplicationController
   end
 
   get '/owners/:id' do
-    @owner = Owner.find_by(id: params[:id])
-    erb :'/owners/show'
+    if logged_in?
+      @owner = Owner.find_by(id: params[:id])
+      erb :'/owners/show'
+    else
+      redirect '/'
+    end
   end
 
   get '/owners/:id/edit' do
-    @owner = Owner.find_by(id: params[:id])
-    erb :'/owners/edit'
+    if logged_in?
+      @owner = Owner.find_by(id: params[:id])
+      erb :'/owners/edit'
+    else
+      redirect '/'
+    end
   end
 
   patch '/owners/:id' do
     @owner = Owner.find_by(id: params[:id])
     if @owner and @owner.update(params[:owner])
+      flash[:message] = "Update successful."
       redirect "/owners/#{@owner.id}"
     else
+      flash[:message] = "Update failed."
       redirect "/owners/#{@owner.id}/edit"
     end
   end
