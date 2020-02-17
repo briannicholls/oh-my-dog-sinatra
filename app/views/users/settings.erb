@@ -1,0 +1,40 @@
+<% if flash.has? :message %>
+<%= flash.message %>
+<% end %>
+
+<form action="/settings" method="post">
+  <table>
+  <tr>
+    <td>
+      <input type="hidden" name="id" value="<%= @user.id %>">
+      <label for="user[role]">Role:</label>
+  </td>
+  <td>
+    <select class="w3-select" name="user[role]">
+      <option value=""></option>
+      <option <%= "selected" if @user.role == 'admin' %> value="admin">admin</option>
+      <option <%= "selected" if @user.role == 'employee' %> value="employee">employee</option>
+    </select>
+  </td>
+  </tr>
+
+  <tr>
+    <td><label for="user[password]">My password:</label></td>
+    <td><input type="password" name="user[password]" id="user[password]"></td>
+  </tr>
+
+
+  <tr>
+    <td><label for="admin_password">Administrator password:</label></td>
+    <td><input type="text" name="admin_password" id="admin_password"></td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+      <input type="submit" name="submit" value="submit">
+    </td>
+  </tr>
+
+
+</table>
+</form>

@@ -16,18 +16,23 @@
     <th>Address</th>
   </tr>
 
-  <% Walk.all.each do |walk| %>
+  <% if @walks %>
+    <% @walks.each do |walk| %>
 
+    <tr>
+      <td><strong><%= walk.dog.name %></strong></td>
+      <td>
+        <a href="/walks/<%= walk.id %>"><%= "#{walk.window_start.strftime('%H:%M')} - #{walk.window_end.strftime('%H:%M')}" %></a>
+      </td>
+      <td>
+        <%= "#{walk.dog.owner.address}" %>
+        <%= " #{walk.dog.owner.apartment_number}" if walk.dog.owner.apartment_number %>
+      </td>
+    </tr>
+    <% end %>
+  <% else %>
   <tr>
-    <td><strong><%= walk.dog.name %></strong></td>
-    <td>
-      <a href="/walks/<%= walk.id %>"><%= "#{walk.window_start.strftime('%H:%M')} - #{walk.window_end.strftime('%H:%M')}" %></a>
-    </td>
-    <td>
-      <%= "#{walk.dog.owner.address}" %>
-      <%= " #{walk.dog.owner.apartment_number}" if walk.dog.owner.apartment_number %>
-    </td>
+    <td class="w3-bar w3-center" colspan="3">No walks to display.</td>
   </tr>
   <% end %>
-
 </table>

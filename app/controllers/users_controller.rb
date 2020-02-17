@@ -17,9 +17,8 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    flash[:message] = "New Users currently prohibited. Contact admin."
-    erb :error
      @user = User.new(params[:user])
+     @user.role = 'employee'
      if @user.save
        session[:user_id] = @user.id
        redirect '/walks'
@@ -63,6 +62,23 @@ class UsersController < ApplicationController
       redirect '/'
     else
       redirect "/users/#{@user.id}"
+    end
+  end
+
+  get '/settings' do
+    @user = current_user
+    erb :'/users/settings'
+  end
+
+  post '/settings' do
+    @user = User.find_by(id: params[:id])
+    if params[:admin_password] == 'levelup'
+      @user.update(params[:user])
+      flash[:message] = "User saved successfully." if @user.role == 'admin'
+      redirect "/users/#{@user.id}"
+    else
+      flash[:message] = "Update failed."
+      erb :'/users/settings'
     end
   end
 end

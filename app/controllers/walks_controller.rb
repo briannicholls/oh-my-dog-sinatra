@@ -2,6 +2,7 @@ class WalksController < ApplicationController
 
   get '/walks' do
     if logged_in?
+      @walks = my_walks(current_user)
       erb :'/walks/index'
     else
       redirect '/'
@@ -18,6 +19,7 @@ class WalksController < ApplicationController
 
   get '/walks/all' do
     if logged_in?
+      @walks = my_walks(current_user)
       erb :'/walks/all_walks'
     else
       redirect '/'
@@ -56,7 +58,6 @@ class WalksController < ApplicationController
   end
 
   patch '/walks/:id' do
-
     @walk = Walk.find_by(id: params[:id])
     if params[:walk][:window_start] and params[:walk][:window_end]
       params[:walk][:window_start] = Time.parse(
@@ -87,6 +88,14 @@ class WalksController < ApplicationController
   def time_to_datetime(time, datetime)
     day = datetime.strftime('%Y-%m-%d')
     DateTime.parse("#{day}T#{time}")
+  end
+
+  def my_walks(user)
+    if user.role != 'admin'
+      Walk.all.select{ |e| e.user_id == user.id}
+    else
+      Walk.all
+    end
   end
 
 end
