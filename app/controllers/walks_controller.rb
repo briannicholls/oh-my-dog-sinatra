@@ -2,7 +2,11 @@ class WalksController < ApplicationController
 
   get '/walks' do
     if logged_in?
-      @walks = my_walks(current_user)
+      if admin?
+        @walks = Walk.all
+      else
+        @walks = my_walks(current_user)
+      end
       erb :'/walks/index'
     else
       redirect '/'
@@ -19,7 +23,11 @@ class WalksController < ApplicationController
 
   get '/walks/all' do
     if logged_in?
-      @walks = my_walks(current_user)
+      if admin?
+        @walks = Walk.all
+      else
+        @walks = my_walks(current_user)
+      end
       erb :'/walks/all_walks'
     else
       redirect '/'
