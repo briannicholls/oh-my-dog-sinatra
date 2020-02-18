@@ -1,0 +1,23 @@
+<% if flash.has?(:message) %>
+<div class="w3-bar w3-green">
+  <%= flash[:message] %>
+</div>
+<% end %>
+<form action="/verify" method="post">
+  <label for="phone">Phone #:</label>
+  <input type="tel" name="phone" value="<%= current_user.phone %>">
+
+  <input type="submit" name="submit" value="Send Verification Text">
+</form>
+<br>
+<form action="/confirm" method="post">
+  <% if @verify_id %>
+  <input type="hidden" name="verify_id" value="<%= @verify_id %>">
+  <% end %>
+  <input type="hidden" name="id" value="<%= current_user.id %>">
+
+  <label for="pin">PIN:</label>
+  <input type="text" name="pin">
+
+  <input type="submit" name="submit" value="Confirm PIN">
+</form>
