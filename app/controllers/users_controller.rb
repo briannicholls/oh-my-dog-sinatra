@@ -81,4 +81,28 @@ class UsersController < ApplicationController
       erb :'/users/settings'
     end
   end
+
+=begin methods for SMS verification
+  get '/verify' do
+    erb :'/users/verify'
+  end
+
+  post '/verify' do
+    @verify_id = Tm.send_text("+1#{params[:phone]}")
+    flash[:message] = "Text sent to #{params[:phone]}"
+    erb :'/users/verify'
+  end
+
+  post '/confirm' do
+    user = User.find_by(id: params[:id])
+    if Tm.confirm params[:pin]
+      user.status = 'active'
+      flash[:message] = "Account activated!"
+      redirect "/users/#{user.id}"
+    else
+      flash[:message] = "Incorrect PIN"
+      erb :'/users/verify'
+    end
+  end
+=end
 end
