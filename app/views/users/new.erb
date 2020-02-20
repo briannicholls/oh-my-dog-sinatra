@@ -1,11 +1,9 @@
-
-
 <% if @user and @user.errors %>
   <p class="w3-panel w3-red"><%= @user.errors.full_messages.to_sentence %></p>
 <% end %>
 
 <form action="/users" method="post">
-<table class="w3-table w3-bordered w3-card">
+<table class="w3-table w3-bordered">
 
   <tr>
     <th colspan="2"><h1>Sign Up</h1></th>
@@ -30,7 +28,7 @@
 
   <tr>
     <td><label for="user[phone]">Phone #:</label></td>
-    <td><input type="tel" name="user[phone]" id="user[phone]"></td>
+    <td><input class="w3-input" type="tel" name="user[phone]" id="user[phone]"></td>
   </tr>
 
   <tr>

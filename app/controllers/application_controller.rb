@@ -44,6 +44,13 @@ class ApplicationController < Sinatra::Base
       end
     end
 
+    def redirect_if_not_admin
+      if !admin?
+        flash[:message] = "You must be an administrator to perform that function."
+        redirect '/users'
+      end
+    end
+
     def logged_in?
       !!current_user
     end

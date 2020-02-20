@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   get '/users/new' do
-    redirect_if_not_logged_in
+    redirect_if_not_admin
     erb :'/users/new'
   end
 
