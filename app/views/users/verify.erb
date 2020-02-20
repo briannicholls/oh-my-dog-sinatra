@@ -1,8 +1,3 @@
-<% if flash.has?(:message) %>
-<div class="w3-bar w3-green">
-  <%= flash[:message] %>
-</div>
-<% end %>
 <form action="/verify" method="post">
   <label for="phone">Phone #:</label>
   <input type="tel" name="phone" value="<%= current_user.phone %>">

@@ -4,21 +4,12 @@
   </div>
 <% end %>
 
-
 <table class="w3-table">
   <form action="/users/<%= @user.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
   <tr>
     <th colspan="2"><h1>Edit User</h1></th>
   </tr>
-
-  <% if flash.has?(:message) %>
-  <tr>
-    <td colspan="2" class="w3-panel w3-red">
-      <%= flash[:message] %>
-    </td>
-  </tr>
-  <% end %>
 
   <tr>
     <td><label for="user[first_name]">First Name:</label></td>

@@ -1,16 +1,8 @@
-<% if flash.has?(:message) %>
-<tr>
-  <td colspan="2" class="w3-panel w3-red">
-    <%= flash[:message] %>
-  </td>
-</tr>
-<% end %>
 <table class="w3-table w3-bordered">
   <tr>
     <th colspan="2">
     <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1></th>
   </tr>
-
 
   <tr>
     <td><label for="first_name">First Name:</label></td>
