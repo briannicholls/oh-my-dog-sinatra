@@ -1,21 +1,16 @@
 class OwnersController < ApplicationController
   get '/owners' do
-    if logged_in?
-      erb :'/owners/index'
-    else
-      redirect '/'
-    end
+    redirect_if_not_logged_in
+    erb :'/owners/index'
   end
 
   get '/owners/new' do
-    if logged_in?
-      erb :'/owners/new'
-    else
-      redirect '/'
-    end
+    redirect_if_not_logged_in
+    erb :'/owners/new'
   end
 
   post '/owners' do
+    redirect_if_not_logged_in
     @owner = Owner.new(params[:owner])
     if @owner.save
       redirect '/owners'
@@ -25,24 +20,19 @@ class OwnersController < ApplicationController
   end
 
   get '/owners/:id' do
-    if logged_in?
-      @owner = Owner.find_by(id: params[:id])
-      erb :'/owners/show'
-    else
-      redirect '/'
-    end
+    redirect_if_not_logged_in
+    @owner = Owner.find_by(id: params[:id])
+    erb :'/owners/show'
   end
 
   get '/owners/:id/edit' do
-    if logged_in?
-      @owner = Owner.find_by(id: params[:id])
-      erb :'/owners/edit'
-    else
-      redirect '/'
-    end
+    redirect_if_not_logged_in
+    @owner = Owner.find_by(id: params[:id])
+    erb :'/owners/edit'
   end
 
   patch '/owners/:id' do
+    redirect_if_not_logged_in
     @owner = Owner.find_by(id: params[:id])
     if @owner and @owner.update(params[:owner])
       flash[:message] = "Update successful."
@@ -54,6 +44,7 @@ class OwnersController < ApplicationController
   end
 
   delete '/owners/:id/delete' do
+    redirect_if_not_logged_in
     @owner = Owner.find_by(id: params[:id])
     if @owner.delete
       redirect '/owners'

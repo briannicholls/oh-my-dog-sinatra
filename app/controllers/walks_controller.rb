@@ -1,40 +1,32 @@
 class WalksController < ApplicationController
 
   get '/walks' do
-    if logged_in?
-      if admin?
-        @walks = Walk.all
-      else
-        @walks = my_walks(current_user)
-      end
-      erb :'/walks/index'
+    redirect_if_not_logged_in
+    if admin?
+      @walks = Walk.all
     else
-      redirect '/'
+      @walks = my_walks(current_user)
     end
+    erb :'/walks/index'
   end
 
   get '/walks/new' do
-    if logged_in?
-      erb :'/walks/new'
-    else
-      redirect '/'
-    end
+    redirect_if_not_logged_in
+    erb :'/walks/new'
   end
 
   get '/walks/all' do
-    if logged_in?
-      if admin?
-        @walks = Walk.all
-      else
-        @walks = my_walks(current_user)
-      end
-      erb :'/walks/all_walks'
+    redirect_if_not_logged_in
+    if admin?
+      @walks = Walk.all
     else
-      redirect '/'
+      @walks = my_walks(current_user)
     end
+    erb :'/walks/all_walks'
   end
 
   post '/walks' do
+    redirect_if_not_logged_in
     @walk = Walk.new(params[:walk])
     w_start = time_to_datetime(params[:walk][:window_start], @walk.date)
     w_end = time_to_datetime(params[:walk][:window_end], @walk.date)
@@ -48,24 +40,19 @@ class WalksController < ApplicationController
   end
 
   get '/walks/:id' do
-    if logged_in?
-      @walk = Walk.find_by(id: params[:id])
-      erb :'/walks/show'
-    else
-      redirect '/'
-    end
+    redirect_if_not_logged_in
+    @walk = Walk.find_by(id: params[:id])
+    erb :'/walks/show'
   end
 
   get '/walks/:id/edit' do
-    if logged_in?
-      @walk = Walk.find_by(id: params[:id])
-      erb :'/walks/edit'
-    else
-      redirect '/'
-    end
+    redirect_if_not_logged_in
+    @walk = Walk.find_by(id: params[:id])
+    erb :'/walks/edit'
   end
 
   patch '/walks/:id' do
+    redirect_if_not_logged_in
     @walk = Walk.find_by(id: params[:id])
     if params[:walk][:window_start] and params[:walk][:window_end]
       params[:walk][:window_start] = Time.parse(
@@ -85,6 +72,7 @@ class WalksController < ApplicationController
   end
 
   delete '/walks/:id/delete' do
+    redirect_if_not_logged_in
     @walk = Walk.find_by(id: params[:id])
     if @walk.delete
       redirect '/walks'

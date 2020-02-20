@@ -1,21 +1,16 @@
 class DogsController < ApplicationController
   get '/dogs' do
-    if logged_in?
-      erb :'/dogs/index'
-    else
-      redirect '/'
-    end
+    redirect_if_not_logged_in
+    erb :'/dogs/index'
   end
 
   get '/dogs/new' do
-    if logged_in?
-      erb :'/dogs/new'
-    else
-      redirect '/'
-    end
+    redirect_if_not_logged_in
+    erb :'/dogs/new'
   end
 
   post '/dogs' do
+    redirect_if_not_logged_in
     @dog = Dog.new(params[:dog])
     if @dog.save
       redirect '/dogs'
@@ -25,28 +20,23 @@ class DogsController < ApplicationController
   end
 
   get '/dogs/:id' do
-    if logged_in?
-      @dog = Dog.find_by(id: params[:id])
-      if @dog
-        erb :'/dogs/show'
-      else
-        redirect '/dogs'
-      end
+    redirect_if_not_logged_in
+    @dog = Dog.find_by(id: params[:id])
+    if @dog
+      erb :'/dogs/show'
     else
-      redirect '/'
+      redirect '/dogs'
     end
   end
 
   get '/dogs/:id/edit' do
-    if logged_in?
+    redirect_if_not_logged_in
       @dog = Dog.find_by(id: params[:id])
       erb :'/dogs/edit'
-    else
-      redirect '/'
-    end
   end
 
   patch '/dogs/:id' do
+    redirect_if_not_logged_in
     @dog = Dog.find_by(id: params[:id])
     if !!params[:photo][:tempfile]
       @dog.image = photo_upload(params[:photo][:tempfile].path, @dog.name)
@@ -59,6 +49,7 @@ class DogsController < ApplicationController
   end
 
   delete '/dogs/:id' do
+    redirect_if_not_logged_in
     @dog = Dog.find_by(id: params[:id])
     if @dog.delete
       redirect '/dogs'

@@ -1,22 +1,17 @@
 class UsersController < ApplicationController
 
   get '/users' do
-    if !logged_in?
-      redirect '/'
-    else
-      erb :'/users/index'
-    end
+    redirect_if_not_logged_in
+    erb :'/users/index'
   end
 
   get '/users/new' do
-    if logged_in?
-      redirect '/'
-    else
-      erb :'/users/new'
-    end
+    redirect_if_not_logged_in
+    erb :'/users/new'
   end
 
   post '/users' do
+    redirect_if_not_logged_in
      @user = User.new(params[:user])
      @user.role = 'employee'
      if @user.save
@@ -28,6 +23,7 @@ class UsersController < ApplicationController
   end
 
   get '/users/:id' do
+    redirect_if_not_logged_in
     @user = User.find_by(id: params[:id])
     if @user and logged_in?
       erb :'/users/show'
@@ -37,6 +33,7 @@ class UsersController < ApplicationController
   end
 
   get '/users/:id/edit' do
+    redirect_if_not_logged_in
     @user = User.find_by(id: params[:id])
     if logged_in? and @user.id == session[:user_id]
       erb :'/users/edit'
@@ -46,6 +43,7 @@ class UsersController < ApplicationController
   end
 
   patch '/users/:id' do
+    redirect_if_not_logged_in
     @user = User.find_by(id: params[:id])
     if @user and @user.update(params[:user])
       redirect "/users/#{@user.id}"
@@ -56,6 +54,7 @@ class UsersController < ApplicationController
   end
 
   delete '/users/:id/delete' do
+    redirect_if_not_logged_in
     @user = User.find_by(id: params[:id])
     if @user.delete
       session.clear
@@ -66,11 +65,13 @@ class UsersController < ApplicationController
   end
 
   get '/settings' do
+    redirect_if_not_logged_in
     @user = current_user
     erb :'/users/settings'
   end
 
   post '/settings' do
+    redirect_if_not_logged_in
     @user = User.find_by(id: params[:id])
     if params[:admin_password] == 'levelup'
       @user.update(params[:user])
