@@ -11,29 +11,36 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   </head>
   <body>
+    <div class="w3-mobile" id="app">
 
-<div class="w3-mobile">
+      <div  class="w3-bar w3-black topnav">
+        <% if logged_in? %>
+        <nav>
+          <a class="w3-bar-item" href="/users">Users</a>
+          <a class="w3-bar-item" href="/owners">Owners</a>
+          <a class="w3-bar-item" href="/dogs">Dogs</a>
+          <a class="w3-bar-item" href="/walks">Walks</a>
+          <a class="w3-bar-item" href="/logout">Log Out</a>
+        </nav>
+        <% end %>
+      </div>
 
-  <% if flash.has?(:message) %>
-    <span class="w3-bar w3-red">
-      <%= flash[:message] %>
-    </span>
-  <% end %>
+      <div class="main w3-mobile">
+        <% if flash.has?(:message) %>
+        <span class="w3-bar w3-red">
+          <%= flash[:message] %>
+        </span>
+        <% end %>
 
-  <header>
-    <% if logged_in? %>
-    <nav class="w3-bar w3-black">
-      <a class="w3-bar-item" href="/users">Users</a>
-      <a class="w3-bar-item" href="/owners">Owners</a>
-      <a class="w3-bar-item" href="/dogs">Dogs</a>
-      <a class="w3-bar-item" href="/walks">Walks</a>
-      <a class="w3-bar-item" href="/logout">Log Out</a>
-    </nav>
-    <% end %>
-  </header>
+        <%= yield %>
 
-  <%= yield %>
-</div>
+        <% if logged_in? %>
+        <div class="w3-bar w3-center w3-light-grey">
+          <span class="w3-small"><em><%= "Logged in as #{current_user.name} (#{current_user.email})" %></em></span>
+        </div>
+        <% end %>
 
+      </div>
+    </div>
   </body>
 </html>

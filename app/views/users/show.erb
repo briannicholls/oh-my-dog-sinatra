@@ -25,7 +25,7 @@
     </td>
   </tr>
 
-  <% if @user == current_user %>
+  <% if @user == current_user || admin? %>
   <tr>
     <th colspan="2">
       <a class="w3-btn w3-yellow w3-bar" href="/users/<%= @user.id %>/edit">Edit User Info</a>

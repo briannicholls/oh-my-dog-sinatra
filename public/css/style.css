@@ -11,7 +11,7 @@ table {
 }
 /*  */
 body {
-  display: flex;
+
 }
 
 .container {
@@ -29,4 +29,26 @@ nav a {
 
 .w3-btn {
   border-radius: 10px;
+}
+
+#app {
+  width: auto;
+  display: block;
+}
+
+div.topnav {
+  padding: 0px;
+  position: fixed;
+  overflow: hidden;
+  z-index: 1;
+}
+
+div.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.main {
+  position: relative;
+  top: 48px;
 }
