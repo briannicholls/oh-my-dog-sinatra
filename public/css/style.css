@@ -51,3 +51,7 @@ div.topnav a:hover {
     top: 100px;
   }
 }
+
+a {
+  max-width: 250px;
+}
