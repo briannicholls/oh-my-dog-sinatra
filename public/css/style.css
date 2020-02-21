@@ -9,13 +9,6 @@
 table {
   background-color: white;
 }
-/*  */
-body {
-
-}
-
-.container {
-}
 
 nav {
   padding: 5px;
@@ -32,8 +25,8 @@ nav a {
 }
 
 #app {
-  width: auto;
   display: block;
+  max-width: 600px;
 }
 
 div.topnav {
@@ -51,4 +44,10 @@ div.topnav a:hover {
 .main {
   position: relative;
   top: 48px;
+}
+
+@media only screen and (max-width: 520px) {
+  .main {
+    top: 100px;
+  }
 }
