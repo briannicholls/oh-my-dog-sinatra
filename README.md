@@ -8,7 +8,7 @@ Uses bcrypt for user password authentication.
 
 Support for importing contacts from Google CSV.
 
-Video Demo: https://youtu.be/MGRrm4FCkds
+Video Demo: https://youtu.be/fA9cVEraJV8
 
 Blog post: https://briannicholls.home.blog/2020/02/15/sinatra-project-web-app-for-a-dog-walking-business/
 
