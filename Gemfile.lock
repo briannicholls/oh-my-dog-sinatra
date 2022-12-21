@@ -113,7 +113,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activerecord (~> 6.0)
+  activerecord
   bcrypt
   capybara
   database_cleaner
@@ -133,6 +133,9 @@ DEPENDENCIES
   sinatra-activerecord
   smarter_csv
   thin
+
+RUBY VERSION
+   ruby 3.1.2p20
 
 BUNDLED WITH
    2.3.7
