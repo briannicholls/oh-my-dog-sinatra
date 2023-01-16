@@ -3,9 +3,9 @@ default: &default
 
 production:
   adapter: postgresql
-  database: db/production
+  database: oh_my_dog_production
 
 development:
   <<: *default
   adapter: postgresql
-  database: 'db/development'
+  database: 'oh_my_dog_development'
