@@ -65,7 +65,7 @@ GEM
       method_source (~> 1.0)
     public_suffix (5.0.1)
     racc (1.6.1)
-    rack (2.2.4)
+    rack (2.2.6.3)
     rack-flash3 (1.0.5)
       rack
     rack-protection (3.0.5)
